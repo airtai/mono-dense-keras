@@ -14,10 +14,20 @@ pip install mono_dense_keras
 
 ## How to use
 
-Fill me in please! Don’t forget code examples:
-
 ``` python
-1+1
+import numpy as np
+from airt.keras.layers import MonotonicDense
+
+layer = MonotonicDense(5)
+
+x = np.random.uniform(size=(3, 4))
+y = layer(x)
+
+y
 ```
 
-    2
+    <tf.Tensor: shape=(3, 5), dtype=float32, numpy=
+    array([[0.90766513, 0.81056094, 0.7483694 , 0.92083305, 0.7246761 ],
+           [0.49968392, 0.74980813, 0.90151215, 1.0100844 , 0.6638055 ],
+           [0.41313928, 0.3741246 , 0.18519436, 0.39448738, 0.26125592]],
+          dtype=float32)>

@@ -20,7 +20,7 @@ website:
   description: "Monotonic Dense Layer implemented in Keras"
   twitter-card: true
   open-graph: true
-  repo-branch: master
+  repo-branch: main
   repo-url: "https://github.com/airtai/mono-dense-keras"
   repo-actions: [issue]
   navbar:

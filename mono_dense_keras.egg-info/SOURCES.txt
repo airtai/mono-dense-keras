@@ -1,0 +1,16 @@
+LICENSE
+MANIFEST.in
+README.md
+settings.ini
+setup.py
+airt/__init__.py
+airt/_modidx.py
+airt/keras/__init__.py
+airt/keras/layers.py
+mono_dense_keras.egg-info/PKG-INFO
+mono_dense_keras.egg-info/SOURCES.txt
+mono_dense_keras.egg-info/dependency_links.txt
+mono_dense_keras.egg-info/entry_points.txt
+mono_dense_keras.egg-info/not-zip-safe
+mono_dense_keras.egg-info/requires.txt
+mono_dense_keras.egg-info/top_level.txt

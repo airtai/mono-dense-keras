@@ -1,0 +1,4 @@
+fastcore
+tensorflow
+
+[dev]
