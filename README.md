@@ -149,14 +149,18 @@ all inputs. This assumtion is always true for all layers except possibly
 the first one. For the first layer, we use `indicator_vector` to specify
 which input parameters are monotonic and to specify are they
 increasingly or decreasingly monotonic: - set 1 for increasingly
-monotonic parameter, - set -1 for decreasingly monotonic parameter,
-and - set 0 otherwise.
+monotonic parameter,
+
+- set -1 for decreasingly monotonic parameter, and
+
+- set 0 otherwise.
 
 In our case, the `indicator_vector` is `[1, 0, -1]` because $y$ is: -
 monotonically increasing w.r.t. $x_1$
-$\left(\frac{\partial y}{x_1} = 3 {x_1}^2 \geq 0\right)$, and -
-monotonically decreasing w.r.t. $x_3$
-$\left(\frac{\partial y}{x_3} = - e^{-x_2} \leq 0\right)$.
+$\left(\frac{\partial y}{x_1} = 3 {x_1}^2 \geq 0\right)$, and
+
+- monotonically decreasing w.r.t. $x_3$
+  $\left(\frac{\partial y}{x_3} = - e^{-x_2} \leq 0\right)$.
 
 ``` python
 from airt.keras.layers import MonotonicDense

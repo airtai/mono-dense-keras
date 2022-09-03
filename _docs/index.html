@@ -331,8 +331,15 @@ Epoch 10/10
 313/313 [==============================] - 1s 2ms/step - loss: 0.4458 - val_loss: 0.3114</code></pre>
 </div>
 </div>
-<p>Now, we’ll use the <a href="https://airtai.github.io/mono-dense-keras/layers.html#monotonicdense"><code>MonotonicDense</code></a> layer instead of <code>Dense</code> layer. By default, the <a href="https://airtai.github.io/mono-dense-keras/layers.html#monotonicdense"><code>MonotonicDense</code></a> layer assumes the output of the layer is monotonically increasing with all inputs. This assumtion is always true for all layers except possibly the first one. For the first layer, we use <code>indicator_vector</code> to specify which input parameters are monotonic and to specify are they increasingly or decreasingly monotonic: - set 1 for increasingly monotonic parameter, - set -1 for decreasingly monotonic parameter, and - set 0 otherwise.</p>
-<p>In our case, the <code>indicator_vector</code> is <code>[1, 0, -1]</code> because <span class="math inline">\(y\)</span> is: - monotonically increasing w.r.t. <span class="math inline">\(x_1\)</span> <span class="math inline">\(\left(\frac{\partial y}{x_1} = 3 {x_1}^2 \geq 0\right)\)</span>, and - monotonically decreasing w.r.t. <span class="math inline">\(x_3\)</span> <span class="math inline">\(\left(\frac{\partial y}{x_3} = - e^{-x_2} \leq 0\right)\)</span>.</p>
+<p>Now, we’ll use the <a href="https://airtai.github.io/mono-dense-keras/layers.html#monotonicdense"><code>MonotonicDense</code></a> layer instead of <code>Dense</code> layer. By default, the <a href="https://airtai.github.io/mono-dense-keras/layers.html#monotonicdense"><code>MonotonicDense</code></a> layer assumes the output of the layer is monotonically increasing with all inputs. This assumtion is always true for all layers except possibly the first one. For the first layer, we use <code>indicator_vector</code> to specify which input parameters are monotonic and to specify are they increasingly or decreasingly monotonic: - set 1 for increasingly monotonic parameter,</p>
+<ul>
+<li><p>set -1 for decreasingly monotonic parameter, and</p></li>
+<li><p>set 0 otherwise.</p></li>
+</ul>
+<p>In our case, the <code>indicator_vector</code> is <code>[1, 0, -1]</code> because <span class="math inline">\(y\)</span> is: - monotonically increasing w.r.t. <span class="math inline">\(x_1\)</span> <span class="math inline">\(\left(\frac{\partial y}{x_1} = 3 {x_1}^2 \geq 0\right)\)</span>, and</p>
+<ul>
+<li>monotonically decreasing w.r.t. <span class="math inline">\(x_3\)</span> <span class="math inline">\(\left(\frac{\partial y}{x_3} = - e^{-x_2} \leq 0\right)\)</span>.</li>
+</ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> airt.keras.layers <span class="im">import</span> MonotonicDense</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
