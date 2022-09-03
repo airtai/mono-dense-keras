@@ -3,4 +3,4 @@ run_jupyter.sh
 
 /.quarto/
 .ipynb_checkpoints
-
+__pycache__
