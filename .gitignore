@@ -3,6 +3,7 @@ run_jupyter.sh
 mono_dense_keras.egg-info
 _proc
 dist
+build
 /.quarto/
 .ipynb_checkpoints
 __pycache__
