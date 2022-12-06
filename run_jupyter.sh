@@ -67,7 +67,7 @@ docker run --rm $GPU_PARAMS \
     -e JUPYTER_CONFIG_DIR=/root/.jupyter \
     -p $AIRT_JUPYTER_PORT:8888 -p $AIRT_TB_PORT:6006 -p $AIRT_DASK_PORT:8787 -p $AIRT_DOCS_PORT:4000 \
     -v $AIRT_PROJECT:/work/mono_dense_keras/ \
-    -v $HOME/.ssh:$HOME/.ssh -v $HOME/.gitconfig:/root/.gitconfig  \
+    -v $HOME/.ssh:/root/.ssh -v $HOME/.gitconfig:/root/.gitconfig  \
     -e USER=$USER -e USERNAME=$USERNAME \
     -e GITHUB_TOKEN=$GITHUB_TOKEN \
     $AIRT_DOCKER
