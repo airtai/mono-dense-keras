@@ -37,13 +37,14 @@ def get_saturated_activation(
 
     return saturated_activation
 
-# %% ../nbs/MonoDenseLayer.ipynb 9
+# %% ../nbs/MonoDenseLayer.ipynb 8
 class MonotonicDense(Dense):
     """Monotonic counterpart of the regular Dense Layer of tf.Keras"""
 
     def __init__(
         self,
         units: int,
+        *,
         activation: Optional[Union[str, Callable]] = None,
         monotonicity_indicator: Union[int, NDArray[np.int_], List[int]] = 1,
         is_convex: bool = False,
@@ -58,8 +59,8 @@ class MonotonicDense(Dense):
             activation: Activation function to use, it is assumed to be convex monotonically
                 increasing function such as "relu" or "elu"
             monotonicity_indicator: Vector to indicate which of the inputs are monotonically increasing or
-                monotonically decreasing or non-monotonic. Has value 1 for monotonically increasing
-                and -1 for monotonically decreasing and 0 for non-monotonic.
+                monotonically decreasing or non-monotonic. Has value 1 for monotonically increasing,
+                -1 for monotonically decreasing and 0 for non-monotonic.
             is_convex: convex if set to True
             is_concave: concave if set to True
             activation_weights: relative weights for each type of activation, the default is (1.0, 1.0, 1.0).
@@ -140,6 +141,19 @@ class MonotonicDense(Dense):
         yield
 
         self.kernel = kernel_org
+
+    def build(self, input_shape, *args, **kwargs):
+        """Build
+
+        Args:
+            input_shape: input tensor
+        """
+        super(MonotonicDense, self).build(input_shape, *args, **kwargs)
+        if not isinstance(self.monotonicity_indicator, int):
+            #             if input_shape[]
+            pass
+
+    #         raise RuntimeError
 
     def call(self, inputs):
         """Call
