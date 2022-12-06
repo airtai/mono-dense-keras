@@ -141,9 +141,9 @@ train_model(model, initial_learning_rate=.1)
     313/313 [==============================] - 1s 2ms/step - loss: 0.4458 - val_loss: 0.3114
 
 Now, we’ll use the
-[`MonotonicDense`](https://airtai.github.io/mono-dense-keras/layers.html#monotonicdense)
+[`MonotonicDense`](https://airtai.github.io/mono-dense-keras/monodenselayer.html#monotonicdense)
 layer instead of `Dense` layer. By default, the
-[`MonotonicDense`](https://airtai.github.io/mono-dense-keras/layers.html#monotonicdense)
+[`MonotonicDense`](https://airtai.github.io/mono-dense-keras/monodenselayer.html#monotonicdense)
 layer assumes the output of the layer is monotonically increasing with
 all inputs. This assumtion is always true for all layers except possibly
 the first one. For the first layer, we use `indicator_vector` to specify

@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "mono-dense-keras"
+  site-url: "https://airtai.github.io/mono-dense-keras"
+  description: "Monotonic Dense Layer implemented in Keras"
+  repo-branch: main
+  repo-url: "https://github.com/airtai/mono-dense-keras"
