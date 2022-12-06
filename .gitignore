@@ -7,3 +7,8 @@ build
 /.quarto/
 .ipynb_checkpoints
 __pycache__
+
+
+# nbdev_mkdocs
+mkdocs/docs/
+mkdocs/site/

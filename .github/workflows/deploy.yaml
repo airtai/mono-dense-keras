@@ -1,4 +1,5 @@
-name: Deploy to GitHub Pages
+name: Deploy nbdev-mkdocs generated documentation to GitHub Pages
+
 on:
   push:
     branches: [ "main", "master" ]
@@ -6,4 +7,5 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    steps: [uses: fastai/workflows/quarto-ghp@master]
+    steps:
+      - uses: airtai/workflows/nbdev-mkdocs-ghp@main
