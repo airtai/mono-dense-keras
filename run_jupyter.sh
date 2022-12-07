@@ -1,7 +1,7 @@
 #!/bin/bash
 
+BRANCH=$(git branch --show-current)
 AIRT_DOCKER=ghcr.io/airtai/nbdev-mkdocs:latest
-docker pull $AIRT_DOCKER
 
 if test -z "$AIRT_JUPYTER_PORT"
 then
@@ -42,14 +42,6 @@ then
 fi
 echo AIRT_PROJECT variable set to $AIRT_PROJECT
 
-if test -z "$AIRT_GPU_PARAMS"
-then
-      echo 'AIRT_GPU_PARAMS variable not set, setting to all GPU-s'
-      export AIRT_GPU_PARAMS="--gpus all"
-fi
-echo AIRT_GPU_PARAMS variable set to $AIRT_GPU_PARAMS
-
-
 echo Using $AIRT_DOCKER
 docker image ls $AIRT_DOCKER
 
@@ -63,11 +55,12 @@ else
 	export GPU_PARAMS=""
 fi
 
-docker run --rm $GPU_PARAMS \
+docker run --rm \
     -e JUPYTER_CONFIG_DIR=/root/.jupyter \
     -p $AIRT_JUPYTER_PORT:8888 -p $AIRT_TB_PORT:6006 -p $AIRT_DASK_PORT:8787 -p $AIRT_DOCS_PORT:4000 \
-    -v $AIRT_PROJECT:/work/mono_dense_keras/ \
-    -v $HOME/.ssh:/root/.ssh -v $HOME/.gitconfig:/root/.gitconfig  \
+    -v $AIRT_PROJECT:/work/nbdev_mkdocs \
+    -v /etc/passwd:/etc/passwd -v /etc/group:/etc/group -v /etc/shadow:/etc/shadow \
+    -v $HOME/.ssh:$HOME/.ssh -v $HOME/.gitconfig:$HOME/.gitconfig  \
     -e USER=$USER -e USERNAME=$USERNAME \
     -e GITHUB_TOKEN=$GITHUB_TOKEN \
     $AIRT_DOCKER
