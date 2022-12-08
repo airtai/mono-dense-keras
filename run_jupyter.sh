@@ -58,7 +58,7 @@ fi
 docker run --rm \
     -e JUPYTER_CONFIG_DIR=/root/.jupyter \
     -p $AIRT_JUPYTER_PORT:8888 -p $AIRT_TB_PORT:6006 -p $AIRT_DASK_PORT:8787 -p $AIRT_DOCS_PORT:4000 \
-    -v $AIRT_PROJECT:/work/nbdev_mkdocs \
+    -v $AIRT_PROJECT:/work/mono_dense_keras \
     -v /etc/passwd:/etc/passwd -v /etc/group:/etc/group -v /etc/shadow:/etc/shadow \
     -v $HOME/.ssh:$HOME/.ssh -v $HOME/.gitconfig:$HOME/.gitconfig  \
     -e USER=$USER -e USERNAME=$USERNAME \
