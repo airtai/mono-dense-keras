@@ -154,6 +154,16 @@ def apply_activations(
 def check_monotonicity_indicator_values(
     monotonicity_indicator: Union[int, NDArray[np.int_]]
 ):
+    """Check monotonicity indicatior
+
+    Check that on values -1, 0 and 1 are used in the monotonicity indicatior. If not, it raises an exception.
+
+    Params:
+        monotonicity_indicatior: monotonicity indicator
+
+    Raises:
+        ValueError: if **monotonicity_indicatior** is not composed of -1, 0 and 1 only
+    """
     if isinstance(monotonicity_indicator, int):
         if monotonicity_indicator not in [-1, 0, 1]:
             raise ValueError(
@@ -174,6 +184,19 @@ def check_monotonicity_indicator_values(
 def apply_monotonicity_indicator_to_kernel(
     kernel: tf.Variable, monotonicity_indicator: Union[int, NDArray[np.int_]]
 ) -> tf.Tensor:
+    """Applies monotonicity indicator to the kernel of a **MonotonicDense** layer.
+
+    Params:
+        kernel: the kernel of a **MonotonicDense** layer
+        monotonicity_indicator: monotonicity layer
+
+    Returns:
+        A tensor where each component of the kernel is substituted by either its negative absolute value, itself, or its
+        positive absolute value, depending of wherether monotonicity indicator for such component is -1, 0 or 1, respectively.
+
+    Raise:
+        ValueError: if the kernel and monotonicity_indicator have different shapes
+    """
     abs_kernel = tf.abs(kernel)
     if isinstance(monotonicity_indicator, int):
         if monotonicity_indicator == 1:
@@ -187,7 +210,6 @@ def apply_monotonicity_indicator_to_kernel(
             raise ValueError(
                 "Kernel and monotonicity_indicator must have the same shapes, but we have {kernel.shape} != {monotonicity_indicator.shape=}"
             )
-        #         monotonicity_indicator = np.expand_dims(monotonicity_indicator, axis=-1)
         kernel = tf.where(
             monotonicity_indicator == 1,
             abs_kernel,
