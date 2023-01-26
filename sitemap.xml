@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://airtai.github.io/mono-dense-keras/</loc>
+         <lastmod>2023-01-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://airtai.github.io/mono-dense-keras/MonoDenseLayer/</loc>
+         <lastmod>2023-01-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>None</loc>
+         <lastmod>2023-01-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://airtai.github.io/mono-dense-keras/changelog_not_found/</loc>
+         <lastmod>2023-01-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://airtai.github.io/mono-dense-keras/cli_commands_not_found/</loc>
+         <lastmod>2023-01-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://airtai.github.io/mono-dense-keras/mono_dense_keras_api_docs/mono_dense_keras/layers/</loc>
+         <lastmod>2023-01-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+</urlset>
