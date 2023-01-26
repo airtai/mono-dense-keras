@@ -2,6 +2,7 @@ run_jupyter.sh
 
 mono_dense_keras.egg-info
 _proc
+_docs
 dist
 build
 /.quarto/
