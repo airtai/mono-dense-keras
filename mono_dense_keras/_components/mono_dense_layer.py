@@ -17,7 +17,7 @@ from numpy.typing import ArrayLike, NDArray
 from tensorflow.keras.layers import Dense
 from tensorflow.types.experimental import TensorLike
 
-# %% ../../nbs/MonoDenseLayer.ipynb 8
+# %% ../../nbs/MonoDenseLayer.ipynb 9
 def get_saturated_activation(
     convex_activation: Callable[[TensorLike], TensorLike],
     concave_activation: Callable[[TensorLike], TensorLike],
@@ -64,7 +64,7 @@ def get_activation_functions(
     )
     return convex_activation, concave_activation, saturated_activation
 
-# %% ../../nbs/MonoDenseLayer.ipynb 12
+# %% ../../nbs/MonoDenseLayer.ipynb 13
 @tf.function
 def apply_activations(
     x: TensorLike,
@@ -109,7 +109,7 @@ def apply_activations(
 
     return y
 
-# %% ../../nbs/MonoDenseLayer.ipynb 16
+# %% ../../nbs/MonoDenseLayer.ipynb 17
 def get_monotonicity_indicator(
     monotonicity_indicator: ArrayLike,
     *,
@@ -139,7 +139,7 @@ def get_monotonicity_indicator(
         )
     return monotonicity_indicator
 
-# %% ../../nbs/MonoDenseLayer.ipynb 20
+# %% ../../nbs/MonoDenseLayer.ipynb 21
 def apply_monotonicity_indicator_to_kernel(
     kernel: tf.Variable,
     monotonicity_indicator: ArrayLike,
@@ -176,7 +176,10 @@ def replace_kernel_using_monotonicity_indicator(
     finally:
         layer.kernel = old_kernel
 
-# %% ../../nbs/MonoDenseLayer.ipynb 27
+
+replace_kernel_using_monotonicity_indicator.__module__ = "mono_dense_keras"
+
+# %% ../../nbs/MonoDenseLayer.ipynb 28
 class MonoDense(Dense):
     """Monotonic counterpart of the regular Dense Layer of tf.keras"""
 
