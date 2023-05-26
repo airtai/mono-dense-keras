@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://mono-dense-keras.airt.ai/0.0.6rc0/</loc>
+         <lastmod>2023-05-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mono-dense-keras.airt.ai/0.0.6rc0/MonoDenseLayer/</loc>
+         <lastmod>2023-05-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mono-dense-keras.airt.ai/0.0.6rc0/TopLevel/</loc>
+         <lastmod>2023-05-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mono-dense-keras.airt.ai/0.0.6rc0/changelog_not_found/</loc>
+         <lastmod>2023-05-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mono-dense-keras.airt.ai/0.0.6rc0/cli_commands_not_found/</loc>
+         <lastmod>2023-05-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mono-dense-keras.airt.ai/0.0.6rc0/api/mono_dense_keras/MonoDense/</loc>
+         <lastmod>2023-05-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+</urlset>
