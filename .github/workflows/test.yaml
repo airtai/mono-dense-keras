@@ -16,7 +16,7 @@ jobs:
       - uses: airtai/workflows/airt-semgrep-check@main        
   test:
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         os:  [ubuntu, windows, macos]
         version: ["3.8", "3.9", "3.10", "3.11"]
