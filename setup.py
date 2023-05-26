@@ -45,6 +45,13 @@ dev_requirements = [
     "semgrep==1.23.0",
 ]
 
+project_urls = {
+   'Bug Tracker': cfg['git_url'] + '/issues',
+   'CI': cfg['git_url'] + '/actions',
+   'Documentation': 'https://mono-dense-keras.airt.ai/',
+#    'Tutorial': 'https://colab.research.google.com/github/airtai/fastkafka/blob/main/nbs/guides/Guide_00_FastKafka_Demo.ipynb'
+}
+
 setuptools.setup(
     name = cfg['lib_name'],
     license = lic[0],
@@ -54,6 +61,7 @@ setuptools.setup(
         'Natural Language :: ' + cfg['language'].title(),
     ] + ['Programming Language :: Python :: '+o for o in py_versions[py_versions.index(min_python):]] + (['License :: ' + lic[1] ] if lic[1] else []),
     url = cfg['git_url'],
+    project_urls=project_urls,
     packages = setuptools.find_packages(),
     include_package_data = True,
     install_requires = requirements,

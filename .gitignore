@@ -9,6 +9,7 @@ build
 .ipynb_checkpoints
 __pycache__
 
+token
 
 # nbdev_mkdocs
 mkdocs/docs/
