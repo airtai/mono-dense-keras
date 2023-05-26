@@ -1,13 +1,13 @@
 # Site
-site_name: mono-dense-keras
-site_url: https://airtai.github.io/mono-dense-keras
+site_name: MonoDense
+site_url: https://mono-dense-keras.airt.ai
 site_author: AIRT Technologies d.o.o.
 site_description: Monotonic Dense Layer implemented in Keras
 
 # Repository
 repo_name: mono-dense-keras
 repo_url: https://github.com/airtai/mono-dense-keras
-edit_uri: ''
+edit_uri: ""
 
 copyright: 2022 onwards, AIRT Technologies d.o.o.
 
@@ -53,7 +53,7 @@ markdown_extensions:
     alternate_style: true
 - admonition
 - toc:
-    permalink: ¤
+    permalink: "¤"
 #     - callouts
 theme:
   name: material
@@ -70,7 +70,6 @@ theme:
   - search.suggest
   - search.highlight
   - search.share
-  - content.code.copy
   palette:
   - scheme: slate
     primary: black
@@ -101,4 +100,6 @@ extra_javascript:
 - https://polyfill.io/v3/polyfill.min.js?features=es6
 - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 extra:
-  social_image: https://opengraph.githubassets.com/1674629818.880679/airtai/mono-dense-keras
+  version:
+    provider: mike
+  social_image: "https://opengraph.githubassets.com/1685090413.786694/airtai/mono-dense-keras"

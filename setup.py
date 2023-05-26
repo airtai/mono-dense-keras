@@ -19,17 +19,31 @@ licenses = {
     'gpl2': ('GNU General Public License v2', 'OSI Approved :: GNU General Public License v2 (GPLv2)'),
     'gpl3': ('GNU General Public License v3', 'OSI Approved :: GNU General Public License v3 (GPLv3)'),
     'bsd3': ('BSD License', 'OSI Approved :: BSD License'),
-    'noncommercial': ('Creative Commons License', 'Free for non-commercial use'),
+    'cc': ('Creative Commons License', 'Free for non-commercial use'),
 }
 statuses = [ '1 - Planning', '2 - Pre-Alpha', '3 - Alpha',
     '4 - Beta', '5 - Production/Stable', '6 - Mature', '7 - Inactive' ]
-py_versions = '3.6 3.7 3.8 3.9 3.10'.split()
+py_versions = '3.6 3.7 3.8 3.9 3.10 3.11'.split()
 
-requirements = cfg.get('requirements','').split()
-if cfg.get('pip_requirements'): requirements += cfg.get('pip_requirements','').split()
 min_python = cfg['min_python']
 lic = licenses.get(cfg['license'].lower(), (cfg['license'], None))
-dev_requirements = (cfg.get('dev_requirements') or '').split()
+
+requirements = ["tensorflow>=2.10.0"]
+    
+dev_requirements = [
+    "keras-tuner==1.3.5",
+    "nbdev_mkdocs==0.5.0",
+    "pytest==7.3.1",
+    "pandas>=1.3.5",
+    "nbqa==1.7.0",
+    "black==23.3.0",
+    "isort==5.12.0",
+    "matplotlib==3.7.1",
+    "seaborn==0.12.2",
+    "mypy==1.3.0",
+    "bandit==1.7.5",
+    "semgrep==1.23.0",
+]
 
 setuptools.setup(
     name = cfg['lib_name'],
