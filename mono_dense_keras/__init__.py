@@ -11,5 +11,8 @@ from ._components.mono_dense_layer import MonoDense
 def dummy() -> None:
     pass
 
+
+dummy.__module__ = "_dummy"
+
 # %% ../nbs/TopLevel.ipynb 3
 __all__ = ["MonoDense"]

@@ -1,6 +1,6 @@
 # Site
-site_name: mono-dense-keras
-site_url: https://airtai.github.io/mono-dense-keras
+site_name: MonoDense
+site_url: https://mono-dense-keras.airt.ai
 site_author: AIRT Technologies d.o.o.
 site_description: Monotonic Dense Layer implemented in Keras
 
