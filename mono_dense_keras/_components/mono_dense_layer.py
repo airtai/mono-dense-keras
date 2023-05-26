@@ -7,6 +7,7 @@ __all__ = ['get_saturated_activation', 'get_activation_functions', 'apply_activa
 # %% ../../nbs/MonoDenseLayer.ipynb 3
 from contextlib import contextmanager
 from datetime import datetime
+from functools import lru_cache
 from typing import *
 
 import tensorflow as tf
@@ -14,16 +15,7 @@ import numpy as np
 
 from numpy.typing import ArrayLike, NDArray
 from tensorflow.keras.layers import Dense
-
-# import tensorflow.keras.backend as K
-# from tensorflow import feature_column as fc
-# from tensorflow.keras.layers import Dense, Embedding, Concatenate, Dropout, BatchNormalization
-# from tensorflow.keras import Model, Sequential
-# from tensorflow.keras.layers import Input
 from tensorflow.types.experimental import TensorLike
-
-# from tensorflow.keras.backend import count_params
-# from tensorflow.keras.optimizers.experimental import AdamW
 
 # %% ../../nbs/MonoDenseLayer.ipynb 8
 def get_saturated_activation(
@@ -48,42 +40,39 @@ def get_saturated_activation(
             concave_activation(x - c) + cc,
         )
 
-    return saturated_activation
+    return saturated_activation  # type: ignore
 
 
+@lru_cache
 def get_activation_functions(
     activation: Optional[Union[str, Callable[[TensorLike], TensorLike]]] = None
 ) -> Tuple[
-    Optional[Callable[[TensorLike], TensorLike]],
-    Optional[Callable[[TensorLike], TensorLike]],
-    Optional[Callable[[TensorLike], TensorLike]],
+    Callable[[TensorLike], TensorLike],
+    Callable[[TensorLike], TensorLike],
+    Callable[[TensorLike], TensorLike],
 ]:
-    if activation:
-        convex_activation = tf.keras.activations.get(
-            activation.lower() if isinstance(activation, str) else activation
-        )
+    convex_activation = tf.keras.activations.get(
+        activation.lower() if isinstance(activation, str) else activation
+    )
 
-        @tf.function
-        def concave_activation(x: TensorLike) -> TensorLike:
-            return -convex_activation(-x)
+    @tf.function
+    def concave_activation(x: TensorLike) -> TensorLike:
+        return -convex_activation(-x)
 
-        saturated_activation = get_saturated_activation(
-            convex_activation, concave_activation
-        )
-        return convex_activation, concave_activation, saturated_activation
-    else:
-        return None, None, None
+    saturated_activation = get_saturated_activation(
+        convex_activation, concave_activation
+    )
+    return convex_activation, concave_activation, saturated_activation
 
 # %% ../../nbs/MonoDenseLayer.ipynb 12
 @tf.function
 def apply_activations(
     x: TensorLike,
     *,
-    units,
-    convex_activation: Optional[Callable[[TensorLike], TensorLike]] = None,
-    concave_activation: Optional[Callable[[TensorLike], TensorLike]] = None,
-    saturated_activation: Optional[Callable[[TensorLike], TensorLike]] = None,
-    #     activation: Optional[Union[str, Callable[[TensorLike], TensorLike]]] = None,
+    units: int,
+    convex_activation: Callable[[TensorLike], TensorLike],
+    concave_activation: Callable[[TensorLike], TensorLike],
+    saturated_activation: Callable[[TensorLike], TensorLike],
     is_convex: bool = False,
     is_concave: bool = False,
     activation_weights: Tuple[float, float, float] = (7.0, 7.0, 2.0),
@@ -175,7 +164,7 @@ def apply_monotonicity_indicator_to_kernel(
 @contextmanager
 def replace_kernel_using_monotonicity_indicator(
     layer: tf.keras.layers.Dense,
-    monotonicity_indicator: Union[int, NDArray[np.int_]],
+    monotonicity_indicator: TensorLike,
 ) -> Generator[None, None, None]:
     old_kernel = layer.kernel
 
@@ -200,8 +189,8 @@ class MonoDense(Dense):
         is_convex: bool = False,
         is_concave: bool = False,
         activation_weights: Tuple[float, float, float] = (7.0, 7.0, 2.0),
-        **kwargs,
-    ) -> TensorLike:
+        **kwargs: Dict[str, Any],
+    ):
         """Constructs a new MonoDense instance.
 
         Params:

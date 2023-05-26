@@ -8,7 +8,7 @@ __all__ = ['dummy']
 from ._components.mono_dense_layer import MonoDense
 
 # %% ../nbs/TopLevel.ipynb 2
-def dummy():
+def dummy() -> None:
     pass
 
 # %% ../nbs/TopLevel.ipynb 3
