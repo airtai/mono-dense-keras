@@ -40,7 +40,9 @@ dev_requirements = [
     "isort==5.12.0",
     "matplotlib==3.7.1",
     "seaborn==0.12.2",
-    "mypy==1.3.0"
+    "mypy==1.3.0",
+    "bandit==1.7.5",
+    "semgrep==1.23.0",
 ]
 
 setuptools.setup(
