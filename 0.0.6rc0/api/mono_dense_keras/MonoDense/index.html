@@ -15,10 +15,10 @@
         <link rel="canonical" href="https://mono-dense-keras.airt.ai/0.0.6rc0/api/mono_dense_keras/MonoDense/">
       
       
-        <link rel="prev" href="../../..">
+        <link rel="prev" href="../../../experiments/Experiments/">
       
       
-        <link rel="next" href="../../../changelog_not_found/">
+        <link rel="next" href="../replace_kernel_using_monotonicity_indicator/">
       
       <link rel="icon" href="../../../overrides/images/compass-outline.png">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.14">
@@ -295,7 +295,22 @@
   
     <li class="md-nav__item">
       <a href="../../.." class="md-nav__link">
-        Guide
+        Monotonic Dense Layer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../experiments/Experiments/" class="md-nav__link">
+        Experiments
       </a>
     </li>
   
@@ -316,7 +331,7 @@
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
       
       
         
@@ -324,13 +339,13 @@
         
       
       
-        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
           API
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
-        <label class="md-nav__title" for="__nav_2">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
           API
         </label>
@@ -349,21 +364,23 @@
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
       
       
         
           
         
+          
+        
       
       
-        <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+        <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
           mono_dense_keras
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
-        <label class="md-nav__title" for="__nav_2_1">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3_1">
           <span class="md-nav__icon md-icon"></span>
           mono_dense_keras
         </label>
@@ -629,6 +646,20 @@
   
 </nav>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../replace_kernel_using_monotonicity_indicator/" class="md-nav__link">
+        replace_kernel_using_monotonicity_indicator
+      </a>
     </li>
   
 
@@ -945,10 +976,7 @@
 
         <details class="quote">
           <summary>Source code in <code>mono_dense_keras/_components/mono_dense_layer.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">180</span>
-<span class="normal">181</span>
-<span class="normal">182</span>
-<span class="normal">183</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">183</span>
 <span class="normal">184</span>
 <span class="normal">185</span>
 <span class="normal">186</span>
@@ -1053,7 +1081,10 @@
 <span class="normal">285</span>
 <span class="normal">286</span>
 <span class="normal">287</span>
-<span class="normal">288</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">MonoDense</span><span class="p">(</span><span class="n">Dense</span><span class="p">):</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">MonoDense</span><span class="p">(</span><span class="n">Dense</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Monotonic counterpart of the regular Dense Layer of tf.keras&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
@@ -1401,10 +1432,7 @@ Ignored if is_convex or is_concave is set to True</p></td>
 </details>
       <details class="quote">
         <summary>Source code in <code>mono_dense_keras/_components/mono_dense_layer.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">183</span>
-<span class="normal">184</span>
-<span class="normal">185</span>
-<span class="normal">186</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">186</span>
 <span class="normal">187</span>
 <span class="normal">188</span>
 <span class="normal">189</span>
@@ -1460,7 +1488,10 @@ Ignored if is_convex or is_concave is set to True</p></td>
 <span class="normal">239</span>
 <span class="normal">240</span>
 <span class="normal">241</span>
-<span class="normal">242</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">units</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
@@ -3055,10 +3086,7 @@ trainable has been set to True with synchronization set as
 
       <details class="quote">
         <summary>Source code in <code>mono_dense_keras/_components/mono_dense_layer.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">244</span>
-<span class="normal">245</span>
-<span class="normal">246</span>
-<span class="normal">247</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">247</span>
 <span class="normal">248</span>
 <span class="normal">249</span>
 <span class="normal">250</span>
@@ -3070,7 +3098,10 @@ trainable has been set to True with synchronization set as
 <span class="normal">256</span>
 <span class="normal">257</span>
 <span class="normal">258</span>
-<span class="normal">259</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">build</span><span class="p">(</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">build</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span> <span class="n">input_shape</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Build</span>
@@ -3150,10 +3181,7 @@ trainable has been set to True with synchronization set as
 
       <details class="quote">
         <summary>Source code in <code>mono_dense_keras/_components/mono_dense_layer.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">261</span>
-<span class="normal">262</span>
-<span class="normal">263</span>
-<span class="normal">264</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">264</span>
 <span class="normal">265</span>
 <span class="normal">266</span>
 <span class="normal">267</span>
@@ -3177,7 +3205,10 @@ trainable has been set to True with synchronization set as
 <span class="normal">285</span>
 <span class="normal">286</span>
 <span class="normal">287</span>
-<span class="normal">288</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">:</span> <span class="n">TensorLike</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TensorLike</span><span class="p">:</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">:</span> <span class="n">TensorLike</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TensorLike</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Call</span>
 
 <span class="sd">    Args:</span>

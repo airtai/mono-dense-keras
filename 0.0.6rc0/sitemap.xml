@@ -30,4 +30,14 @@
          <lastmod>2023-05-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
+    <url>
+         <loc>https://mono-dense-keras.airt.ai/0.0.6rc0/api/mono_dense_keras/replace_kernel_using_monotonicity_indicator/</loc>
+         <lastmod>2023-05-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mono-dense-keras.airt.ai/0.0.6rc0/experiments/Experiments/</loc>
+         <lastmod>2023-05-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
 </urlset>
