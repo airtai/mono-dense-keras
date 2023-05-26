@@ -2,3 +2,4 @@ website:
   sidebar:
     contents:
       - index.ipynb
+      - experiments/Experiments.ipynb
