@@ -43,6 +43,7 @@ dev_requirements = [
     "mypy==1.3.0",
     "bandit==1.7.5",
     "semgrep==1.23.0",
+    "tqdm",
 ]
 
 project_urls = {
