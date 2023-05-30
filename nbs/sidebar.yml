@@ -6,3 +6,4 @@ website:
         contents:
           - Experiments.ipynb
           - experiments/AutoMPG.ipynb
+          - experiments/Heart.ipynb
