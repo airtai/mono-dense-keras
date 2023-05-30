@@ -2,42 +2,147 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://mono-dense-keras.airt.ai/0.0.6rc1/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-05-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mono-dense-keras.airt.ai/0.0.6rc1/Experiments/</loc>
+         <lastmod>2023-05-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mono-dense-keras.airt.ai/0.0.6rc1/Helpers/</loc>
+         <lastmod>2023-05-30</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://mono-dense-keras.airt.ai/0.0.6rc1/MonoDenseLayer/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-05-30</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://mono-dense-keras.airt.ai/0.0.6rc1/TopLevel/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-05-30</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://mono-dense-keras.airt.ai/0.0.6rc1/changelog_not_found/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-05-30</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://mono-dense-keras.airt.ai/0.0.6rc1/cli_commands_not_found/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-05-30</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://mono-dense-keras.airt.ai/0.0.6rc1/api/mono_dense_keras/MonoDense/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-05-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mono-dense-keras.airt.ai/0.0.6rc1/api/mono_dense_keras/create_type_1/</loc>
+         <lastmod>2023-05-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mono-dense-keras.airt.ai/0.0.6rc1/api/mono_dense_keras/create_type_2/</loc>
+         <lastmod>2023-05-30</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://mono-dense-keras.airt.ai/0.0.6rc1/api/mono_dense_keras/replace_kernel_using_monotonicity_indicator/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <lastmod>2023-05-30</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://mono-dense-keras.airt.ai/0.0.6rc1/experiments/Experiments/</loc>
-         <lastmod>2023-05-26</lastmod>
+         <loc>https://mono-dense-keras.airt.ai/0.0.6rc1/api/mono_dense_keras/experiments/DownloadProgressBar/</loc>
+         <lastmod>2023-05-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mono-dense-keras.airt.ai/0.0.6rc1/api/mono_dense_keras/experiments/TestHyperModel/</loc>
+         <lastmod>2023-05-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mono-dense-keras.airt.ai/0.0.6rc1/api/mono_dense_keras/experiments/build_mono_model_f/</loc>
+         <lastmod>2023-05-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mono-dense-keras.airt.ai/0.0.6rc1/api/mono_dense_keras/experiments/count_model_params/</loc>
+         <lastmod>2023-05-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mono-dense-keras.airt.ai/0.0.6rc1/api/mono_dense_keras/experiments/create_model_stats/</loc>
+         <lastmod>2023-05-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mono-dense-keras.airt.ai/0.0.6rc1/api/mono_dense_keras/experiments/create_tuner_stats/</loc>
+         <lastmod>2023-05-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mono-dense-keras.airt.ai/0.0.6rc1/api/mono_dense_keras/experiments/df2ds/</loc>
+         <lastmod>2023-05-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mono-dense-keras.airt.ai/0.0.6rc1/api/mono_dense_keras/experiments/download_data/</loc>
+         <lastmod>2023-05-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mono-dense-keras.airt.ai/0.0.6rc1/api/mono_dense_keras/experiments/download_url/</loc>
+         <lastmod>2023-05-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mono-dense-keras.airt.ai/0.0.6rc1/api/mono_dense_keras/experiments/find_hyperparameters/</loc>
+         <lastmod>2023-05-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mono-dense-keras.airt.ai/0.0.6rc1/api/mono_dense_keras/experiments/get_build_model_with_hp_f/</loc>
+         <lastmod>2023-05-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mono-dense-keras.airt.ai/0.0.6rc1/api/mono_dense_keras/experiments/get_data_path/</loc>
+         <lastmod>2023-05-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mono-dense-keras.airt.ai/0.0.6rc1/api/mono_dense_keras/experiments/get_train_n_test_data/</loc>
+         <lastmod>2023-05-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mono-dense-keras.airt.ai/0.0.6rc1/api/mono_dense_keras/experiments/peek/</loc>
+         <lastmod>2023-05-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mono-dense-keras.airt.ai/0.0.6rc1/api/mono_dense_keras/experiments/sanitize_col_names/</loc>
+         <lastmod>2023-05-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mono-dense-keras.airt.ai/0.0.6rc1/api/mono_dense_keras/helpers/export/</loc>
+         <lastmod>2023-05-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mono-dense-keras.airt.ai/0.0.6rc1/experiments/AutoMPG/</loc>
+         <lastmod>2023-05-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mono-dense-keras.airt.ai/0.0.6rc1/experiments/Heart/</loc>
+         <lastmod>2023-05-30</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
