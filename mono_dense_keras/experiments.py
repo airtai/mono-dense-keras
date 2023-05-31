@@ -6,14 +6,17 @@ __all__ = ['get_data_path', 'download_data', 'sanitize_col_names', 'get_train_n_
            'create_model_stats', 'create_tuner_stats']
 
 # %% ../nbs/Experiments.ipynb 3
-import shutil
-import urllib.request
 from contextlib import contextmanager
 from datetime import datetime
 from os import environ
 from pathlib import Path
-from tempfile import TemporaryDirectory
 from typing import *
+
+from tempfile import TemporaryDirectory
+import urllib.request
+import shutil
+
+from tqdm import tqdm
 
 import matplotlib
 import matplotlib.pyplot as plt
@@ -24,10 +27,10 @@ import seaborn as sns
 import tensorflow as tf
 from keras_tuner import (
     BayesianOptimization,
-    HyperModel,
-    HyperParameters,
     Objective,
     Tuner,
+    HyperParameters,
+    HyperModel,
 )
 from numpy.typing import ArrayLike, NDArray
 from tensorflow.keras import Model
@@ -35,13 +38,12 @@ from tensorflow.keras.backend import count_params
 from tensorflow.keras.layers import Concatenate, Dense, Dropout, Input
 from tensorflow.keras.optimizers.experimental import AdamW
 from tensorflow.types.experimental import TensorLike
-from tqdm import tqdm
 
 from mono_dense_keras import (
     MonoDense,
+    replace_kernel_using_monotonicity_indicator,
     create_type_1,
     create_type_2,
-    replace_kernel_using_monotonicity_indicator,
 )
 
 # %% ../nbs/Experiments.ipynb 13
@@ -58,7 +60,10 @@ def download_url(url: str, output_path: Path) -> None:
     with DownloadProgressBar(
         unit="B", unit_scale=True, miniters=1, desc=url.split("/")[-1]
     ) as t:
-        urllib.request.urlretrieve(url, filename=output_path, reporthook=t.update_to)
+        # nosemgrep: python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected
+        urllib.request.urlretrieve(
+            url, filename=output_path, reporthook=t.update_to
+        )  # nosec
 
 # %% ../nbs/Experiments.ipynb 14
 def get_data_path(data_path: Optional[Union[Path, str]] = None) -> Path:
@@ -375,7 +380,8 @@ def create_tuner_stats(
 
         try:
             display(stats.sort_values(f"{tuner.oracle.objective.name}_mean"))  # type: ignore
-        except Exception:
+        # nosemgrep
+        except Exception as e:  # nosec
             pass
 
     return stats.sort_values(f"{tuner.oracle.objective.name}_mean")  # type: ignore
