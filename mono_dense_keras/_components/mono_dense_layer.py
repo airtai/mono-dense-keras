@@ -473,13 +473,12 @@ def create_type_1(
 
     return y
 
-# %% ../../nbs/MonoDenseLayer.ipynb 49
+# %% ../../nbs/MonoDenseLayer.ipynb 51
 @export
 def create_type_2(
     inputs: Union[TensorLike, Dict[str, TensorLike], List[TensorLike]],
     *,
-    mono_units: Optional[int] = None,
-    non_mono_units: Optional[List[int]] = None,
+    input_units: Optional[int] = None,
     units: int,
     final_units: int,
     activation: Union[str, Callable[[TensorLike], TensorLike]],
@@ -494,8 +493,7 @@ def create_type_2(
 
     Args:
         inputs: input tensor or a dictionary of tensors
-        mono_units: used to preprocess monotonic features before entering the common mono block
-        non_mono_units: fully-connected network used to preprocess non-monotonic features before entering the common mono block
+        input_units: used to preprocess features before entering the common mono block
         units: number of units in hidden layers
         final_units: number of units in the output layer
         activation: the base activation function
@@ -522,16 +520,13 @@ def create_type_2(
         monotonicity_indicator, is_convex, is_concave, names
     )
 
-    if mono_units is None:
-        mono_units = max(units // 4, 1)
+    if input_units is None:
+        input_units = max(units // 4, 1)
 
-    if non_mono_units is None:
-        non_mono_units = [units]
-
-    y_mono = [
+    y = [
         (
             MonoDense(
-                units=mono_units,
+                units=input_units,
                 activation=activation,
                 monotonicity_indicator=monotonicity_indicator[i],
                 is_convex=is_convex[i],
@@ -541,35 +536,20 @@ def create_type_2(
                 + ("_convex" if is_convex[i] else "")
                 + ("_concave" if is_concave[i] else ""),
             )
+            if monotonicity_indicator[i] != 0
+            else (
+                Dense(
+                    units=input_units, activation=activation, name=f"dense_{names[i]}"
+                )
+            )
         )(x[i])
         for i in range(len(inputs))
-        if monotonicity_indicator[i] != 0
     ]
 
-    y_mono_len = len(y_mono)
-
-    y_mono = Concatenate(name="concat_mono")(y_mono)
-    if dropout and dropout > 0.0:
-        y_mono = Dropout(dropout)(y_mono)
-
-    y_non_mono = [x[i] for i in range(len(inputs)) if monotonicity_indicator[i] == 0]
-    if len(non_mono_units) == 0:
-        y_non_mono_len = len(y_non_mono)
-    else:
-        y_non_mono_len = non_mono_units[-1]
-    y_non_mono = Concatenate(name="concat_non_mono")(y_non_mono)
-
-    for i in range(len(non_mono_units)):
-        y_non_mono = Dense(
-            units=non_mono_units[i], activation=activation, name=f"non_mono_dense_{i}"
-        )(y_non_mono)
-        if dropout and dropout > 0.0:
-            y = Dropout(dropout)(y_non_mono)
-
-    y = Concatenate(name="concat_preprocess")([y_mono, y_non_mono])
-    monotonicity_indicator_block = [1] * (mono_units * y_mono_len) + [
-        0
-    ] * y_non_mono_len
+    y = Concatenate(name="preprocessed_features")(y)
+    monotonicity_indicator_block = sum(
+        [[abs(x)] * input_units for x in monotonicity_indicator], []
+    )
 
     y = _create_mono_block(
         units=[units] * (n_layers - 1) + [final_units],

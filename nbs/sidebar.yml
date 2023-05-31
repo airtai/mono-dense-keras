@@ -7,3 +7,6 @@ website:
           - Experiments.ipynb
           - experiments/AutoMPG.ipynb
           - experiments/Heart.ipynb
+          - experiments/Compas.ipynb
+          - experiments/Blog.ipynb
+          - experiments/Loan.ipynb
