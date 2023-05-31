@@ -322,6 +322,12 @@
         
           
         
+          
+        
+          
+        
+          
+        
       
       
         <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -372,6 +378,48 @@
     <li class="md-nav__item">
       <a href="../../../experiments/Heart/" class="md-nav__link">
         Heart disease
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../experiments/Compas/" class="md-nav__link">
+        COMPAS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../experiments/Blog/" class="md-nav__link">
+        Blog feedback
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../experiments/Loan/" class="md-nav__link">
+        Loan
       </a>
     </li>
   
@@ -964,7 +1012,7 @@
 
 
 <h2 id="mono_dense_keras.create_type_2" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">mono_dense_keras</span><span class="o">.</span><span class="n">create_type_2</span><span class="p">(</span><span class="n">inputs</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">TensorLike</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">TensorLike</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="n">TensorLike</span><span class="p">]],</span> <span class="o">*</span><span class="p">,</span> <span class="n">mono_units</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">non_mono_units</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">units</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">final_units</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">activation</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">TensorLike</span><span class="p">],</span> <span class="n">TensorLike</span><span class="p">]],</span> <span class="n">n_layers</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">final_activation</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">TensorLike</span><span class="p">],</span> <span class="n">TensorLike</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">monotonicity_indicator</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">is_convex</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bool</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="nb">bool</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">is_concave</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bool</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="nb">bool</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">dropout</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TensorLike</span></code>
+<code class="highlight language-python"><span class="n">mono_dense_keras</span><span class="o">.</span><span class="n">create_type_2</span><span class="p">(</span><span class="n">inputs</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">TensorLike</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">TensorLike</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="n">TensorLike</span><span class="p">]],</span> <span class="o">*</span><span class="p">,</span> <span class="n">input_units</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">units</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">final_units</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">activation</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">TensorLike</span><span class="p">],</span> <span class="n">TensorLike</span><span class="p">]],</span> <span class="n">n_layers</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">final_activation</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">TensorLike</span><span class="p">],</span> <span class="n">TensorLike</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">monotonicity_indicator</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">is_convex</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bool</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="nb">bool</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">is_concave</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bool</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="nb">bool</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">dropout</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TensorLike</span></code>
 
 <a href="#mono_dense_keras.create_type_2" class="headerlink" title="Permanent link">¤</a></h2>
 
@@ -995,21 +1043,11 @@
           </td>
         </tr>
         <tr>
-          <td><code>mono_units</code></td>
+          <td><code>input_units</code></td>
           <td>
                 <code>Optional[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a>]</code>
           </td>
-          <td><p>used to preprocess monotonic features before entering the common mono block</p></td>
-          <td>
-                <code>None</code>
-          </td>
-        </tr>
-        <tr>
-          <td><code>non_mono_units</code></td>
-          <td>
-                <code>Optional[List[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a>]]</code>
-          </td>
-          <td><p>fully-connected network used to preprocess non-monotonic features before entering the common mono block</p></td>
+          <td><p>used to preprocess features before entering the common mono block</p></td>
           <td>
                 <code>None</code>
           </td>
@@ -1220,32 +1258,11 @@ then all input features are set to the same monotinicity indicator.</p></td>
 <span class="normal">564</span>
 <span class="normal">565</span>
 <span class="normal">566</span>
-<span class="normal">567</span>
-<span class="normal">568</span>
-<span class="normal">569</span>
-<span class="normal">570</span>
-<span class="normal">571</span>
-<span class="normal">572</span>
-<span class="normal">573</span>
-<span class="normal">574</span>
-<span class="normal">575</span>
-<span class="normal">576</span>
-<span class="normal">577</span>
-<span class="normal">578</span>
-<span class="normal">579</span>
-<span class="normal">580</span>
-<span class="normal">581</span>
-<span class="normal">582</span>
-<span class="normal">583</span>
-<span class="normal">584</span>
-<span class="normal">585</span>
-<span class="normal">586</span>
-<span class="normal">587</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@export</span>
+<span class="normal">567</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@export</span>
 <span class="k">def</span> <span class="nf">create_type_2</span><span class="p">(</span>
     <span class="n">inputs</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">TensorLike</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">TensorLike</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="n">TensorLike</span><span class="p">]],</span>
     <span class="o">*</span><span class="p">,</span>
-    <span class="n">mono_units</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">non_mono_units</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">input_units</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">units</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">final_units</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">activation</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">TensorLike</span><span class="p">],</span> <span class="n">TensorLike</span><span class="p">]],</span>
@@ -1260,8 +1277,7 @@ then all input features are set to the same monotinicity indicator.</p></td>
 
 <span class="sd">    Args:</span>
 <span class="sd">        inputs: input tensor or a dictionary of tensors</span>
-<span class="sd">        mono_units: used to preprocess monotonic features before entering the common mono block</span>
-<span class="sd">        non_mono_units: fully-connected network used to preprocess non-monotonic features before entering the common mono block</span>
+<span class="sd">        input_units: used to preprocess features before entering the common mono block</span>
 <span class="sd">        units: number of units in hidden layers</span>
 <span class="sd">        final_units: number of units in the output layer</span>
 <span class="sd">        activation: the base activation function</span>
@@ -1288,16 +1304,13 @@ then all input features are set to the same monotinicity indicator.</p></td>
         <span class="n">monotonicity_indicator</span><span class="p">,</span> <span class="n">is_convex</span><span class="p">,</span> <span class="n">is_concave</span><span class="p">,</span> <span class="n">names</span>
     <span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">mono_units</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">mono_units</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">units</span> <span class="o">//</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">input_units</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">input_units</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">units</span> <span class="o">//</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">non_mono_units</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">non_mono_units</span> <span class="o">=</span> <span class="p">[</span><span class="n">units</span><span class="p">]</span>
-
-    <span class="n">y_mono</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="p">[</span>
         <span class="p">(</span>
             <span class="n">MonoDense</span><span class="p">(</span>
-                <span class="n">units</span><span class="o">=</span><span class="n">mono_units</span><span class="p">,</span>
+                <span class="n">units</span><span class="o">=</span><span class="n">input_units</span><span class="p">,</span>
                 <span class="n">activation</span><span class="o">=</span><span class="n">activation</span><span class="p">,</span>
                 <span class="n">monotonicity_indicator</span><span class="o">=</span><span class="n">monotonicity_indicator</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
                 <span class="n">is_convex</span><span class="o">=</span><span class="n">is_convex</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
@@ -1307,35 +1320,20 @@ then all input features are set to the same monotinicity indicator.</p></td>
                 <span class="o">+</span> <span class="p">(</span><span class="s2">&quot;_convex&quot;</span> <span class="k">if</span> <span class="n">is_convex</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
                 <span class="o">+</span> <span class="p">(</span><span class="s2">&quot;_concave&quot;</span> <span class="k">if</span> <span class="n">is_concave</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">),</span>
             <span class="p">)</span>
+            <span class="k">if</span> <span class="n">monotonicity_indicator</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span>
+            <span class="k">else</span> <span class="p">(</span>
+                <span class="n">Dense</span><span class="p">(</span>
+                    <span class="n">units</span><span class="o">=</span><span class="n">input_units</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">activation</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;dense_</span><span class="si">{</span><span class="n">names</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
         <span class="p">)(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inputs</span><span class="p">))</span>
-        <span class="k">if</span> <span class="n">monotonicity_indicator</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span>
     <span class="p">]</span>
 
-    <span class="n">y_mono_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_mono</span><span class="p">)</span>
-
-    <span class="n">y_mono</span> <span class="o">=</span> <span class="n">Concatenate</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;concat_mono&quot;</span><span class="p">)(</span><span class="n">y_mono</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">dropout</span> <span class="ow">and</span> <span class="n">dropout</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">:</span>
-        <span class="n">y_mono</span> <span class="o">=</span> <span class="n">Dropout</span><span class="p">(</span><span class="n">dropout</span><span class="p">)(</span><span class="n">y_mono</span><span class="p">)</span>
-
-    <span class="n">y_non_mono</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inputs</span><span class="p">))</span> <span class="k">if</span> <span class="n">monotonicity_indicator</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">non_mono_units</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">y_non_mono_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_non_mono</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">y_non_mono_len</span> <span class="o">=</span> <span class="n">non_mono_units</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">y_non_mono</span> <span class="o">=</span> <span class="n">Concatenate</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;concat_non_mono&quot;</span><span class="p">)(</span><span class="n">y_non_mono</span><span class="p">)</span>
-
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">non_mono_units</span><span class="p">)):</span>
-        <span class="n">y_non_mono</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span>
-            <span class="n">units</span><span class="o">=</span><span class="n">non_mono_units</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">activation</span><span class="o">=</span><span class="n">activation</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;non_mono_dense_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span>
-        <span class="p">)(</span><span class="n">y_non_mono</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">dropout</span> <span class="ow">and</span> <span class="n">dropout</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">:</span>
-            <span class="n">y</span> <span class="o">=</span> <span class="n">Dropout</span><span class="p">(</span><span class="n">dropout</span><span class="p">)(</span><span class="n">y_non_mono</span><span class="p">)</span>
-
-    <span class="n">y</span> <span class="o">=</span> <span class="n">Concatenate</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;concat_preprocess&quot;</span><span class="p">)([</span><span class="n">y_mono</span><span class="p">,</span> <span class="n">y_non_mono</span><span class="p">])</span>
-    <span class="n">monotonicity_indicator_block</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">mono_units</span> <span class="o">*</span> <span class="n">y_mono_len</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span>
-        <span class="mi">0</span>
-    <span class="p">]</span> <span class="o">*</span> <span class="n">y_non_mono_len</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">Concatenate</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;preprocessed_features&quot;</span><span class="p">)(</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">monotonicity_indicator_block</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span>
+        <span class="p">[[</span><span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">)]</span> <span class="o">*</span> <span class="n">input_units</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">monotonicity_indicator</span><span class="p">],</span> <span class="p">[]</span>
+    <span class="p">)</span>
 
     <span class="n">y</span> <span class="o">=</span> <span class="n">_create_mono_block</span><span class="p">(</span>
         <span class="n">units</span><span class="o">=</span><span class="p">[</span><span class="n">units</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">n_layers</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="n">final_units</span><span class="p">],</span>

@@ -12,27 +12,27 @@
         <meta name="author" content="AIRT Technologies d.o.o.">
       
       
-        <link rel="canonical" href="https://mono-dense-keras.airt.ai/0.0.6rc1/api/mono_dense_keras/experiments/get_train_n_test_data/">
+        <link rel="canonical" href="https://mono-dense-keras.airt.ai/0.0.6rc1/experiments/Compas/">
       
       
-        <link rel="prev" href="../get_data_path/">
+        <link rel="prev" href="../Heart/">
       
       
-        <link rel="next" href="../peek/">
+        <link rel="next" href="../Blog/">
       
-      <link rel="icon" href="../../../../overrides/images/airt_icon_blue.svg">
+      <link rel="icon" href="../../overrides/images/airt_icon_blue.svg">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
     
     
       
-        <title>get_train_n_test_data - MonoDense</title>
+        <title>COMPAS - MonoDense</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.26e3688c.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.26e3688c.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ecc896b0.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ecc896b0.min.css">
       
       
 
@@ -48,11 +48,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
     
-      <link rel="stylesheet" href="../../../../overrides/css/extra.css">
+      <link rel="stylesheet" href="../../overrides/css/extra.css">
     
-    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -65,16 +65,16 @@
   
   
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="MonoDense - get_train_n_test_data" />
+  <meta property="og:title" content="MonoDense - COMPAS" />
   <meta property="og:description" content="Monotonic Dense Layer implemented in Keras" />
-  <meta property="og:url" content="https://mono-dense-keras.airt.ai/0.0.6rc1/api/mono_dense_keras/experiments/get_train_n_test_data/" />
+  <meta property="og:url" content="https://mono-dense-keras.airt.ai/0.0.6rc1/experiments/Compas/" />
   <meta property="og:image" content="https://opengraph.githubassets.com/1685090413.786694/airtai/mono-dense-keras" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="MonoDense - get_train_n_test_data" />
+  <meta name="twitter:title" content="MonoDense - COMPAS" />
   <meta name="twitter:description" content="Monotonic Dense Layer implemented in Keras" />
   <meta name="twitter:image" content="https://opengraph.githubassets.com/1685090413.786694/airtai/mono-dense-keras" />
 
@@ -99,6 +99,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#compas" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -111,7 +116,7 @@
               
   You're not viewing the latest version.
   <!-- nosemgrep -->
-  <a href="../../../../.."> 
+  <a href="../../.."> 
     <strong>Click here to go to latest.</strong>
   </a>
 
@@ -128,9 +133,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../.." title="MonoDense" class="md-header__button md-logo" aria-label="MonoDense" data-md-component="logo">
+    <a href="../.." title="MonoDense" class="md-header__button md-logo" aria-label="MonoDense" data-md-component="logo">
       
-  <img src="../../../../overrides/images/airt_icon_blue.svg" alt="logo">
+  <img src="../../overrides/images/airt_icon_blue.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -146,7 +151,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              get_train_n_test_data
+              COMPAS
             
           </span>
         </div>
@@ -257,9 +262,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="MonoDense" class="md-nav__button md-logo" aria-label="MonoDense" data-md-component="logo">
+    <a href="../.." title="MonoDense" class="md-nav__button md-logo" aria-label="MonoDense" data-md-component="logo">
       
-  <img src="../../../../overrides/images/airt_icon_blue.svg" alt="logo">
+  <img src="../../overrides/images/airt_icon_blue.svg" alt="logo">
 
     </a>
     MonoDense
@@ -287,7 +292,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         Monotonic Dense Layer
       </a>
     </li>
@@ -300,14 +305,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
       
       
         
@@ -330,7 +337,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_2">
           <span class="md-nav__icon md-icon"></span>
           Experiments
@@ -343,7 +350,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Experiments/" class="md-nav__link">
+      <a href="../../Experiments/" class="md-nav__link">
         Experiments
       </a>
     </li>
@@ -357,7 +364,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../experiments/AutoMPG/" class="md-nav__link">
+      <a href="../AutoMPG/" class="md-nav__link">
         Auto MPG
       </a>
     </li>
@@ -371,7 +378,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../experiments/Heart/" class="md-nav__link">
+      <a href="../Heart/" class="md-nav__link">
         Heart disease
       </a>
     </li>
@@ -383,11 +390,21 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../../../experiments/Compas/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         COMPAS
       </a>
+      
     </li>
   
 
@@ -399,7 +416,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../experiments/Blog/" class="md-nav__link">
+      <a href="../Blog/" class="md-nav__link">
         Blog feedback
       </a>
     </li>
@@ -413,7 +430,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../experiments/Loan/" class="md-nav__link">
+      <a href="../Loan/" class="md-nav__link">
         Loan
       </a>
     </li>
@@ -433,16 +450,14 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
       
       
         
@@ -455,7 +470,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
           API
@@ -466,16 +481,14 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
       
       
         
@@ -498,7 +511,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_3_1">
           <span class="md-nav__icon md-icon"></span>
           mono_dense_keras
@@ -511,7 +524,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../MonoDense/" class="md-nav__link">
+      <a href="../../api/mono_dense_keras/MonoDense/" class="md-nav__link">
         MonoDense
       </a>
     </li>
@@ -525,7 +538,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../create_type_1/" class="md-nav__link">
+      <a href="../../api/mono_dense_keras/create_type_1/" class="md-nav__link">
         create_type_1
       </a>
     </li>
@@ -539,7 +552,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../create_type_2/" class="md-nav__link">
+      <a href="../../api/mono_dense_keras/create_type_2/" class="md-nav__link">
         create_type_2
       </a>
     </li>
@@ -551,16 +564,14 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_4" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_4" >
       
       
         
@@ -601,7 +612,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_4_label" aria-expanded="true">
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_4_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_3_1_4">
           <span class="md-nav__icon md-icon"></span>
           experiments
@@ -614,7 +625,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../DownloadProgressBar/" class="md-nav__link">
+      <a href="../../api/mono_dense_keras/experiments/DownloadProgressBar/" class="md-nav__link">
         DownloadProgressBar
       </a>
     </li>
@@ -628,7 +639,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../TestHyperModel/" class="md-nav__link">
+      <a href="../../api/mono_dense_keras/experiments/TestHyperModel/" class="md-nav__link">
         TestHyperModel
       </a>
     </li>
@@ -642,7 +653,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../build_mono_model_f/" class="md-nav__link">
+      <a href="../../api/mono_dense_keras/experiments/build_mono_model_f/" class="md-nav__link">
         build_mono_model_f
       </a>
     </li>
@@ -656,7 +667,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../count_model_params/" class="md-nav__link">
+      <a href="../../api/mono_dense_keras/experiments/count_model_params/" class="md-nav__link">
         count_model_params
       </a>
     </li>
@@ -670,7 +681,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../create_model_stats/" class="md-nav__link">
+      <a href="../../api/mono_dense_keras/experiments/create_model_stats/" class="md-nav__link">
         create_model_stats
       </a>
     </li>
@@ -684,7 +695,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../create_tuner_stats/" class="md-nav__link">
+      <a href="../../api/mono_dense_keras/experiments/create_tuner_stats/" class="md-nav__link">
         create_tuner_stats
       </a>
     </li>
@@ -698,7 +709,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../df2ds/" class="md-nav__link">
+      <a href="../../api/mono_dense_keras/experiments/df2ds/" class="md-nav__link">
         df2ds
       </a>
     </li>
@@ -712,7 +723,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../download_data/" class="md-nav__link">
+      <a href="../../api/mono_dense_keras/experiments/download_data/" class="md-nav__link">
         download_data
       </a>
     </li>
@@ -726,7 +737,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../download_url/" class="md-nav__link">
+      <a href="../../api/mono_dense_keras/experiments/download_url/" class="md-nav__link">
         download_url
       </a>
     </li>
@@ -740,7 +751,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../find_hyperparameters/" class="md-nav__link">
+      <a href="../../api/mono_dense_keras/experiments/find_hyperparameters/" class="md-nav__link">
         find_hyperparameters
       </a>
     </li>
@@ -754,7 +765,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../get_build_model_with_hp_f/" class="md-nav__link">
+      <a href="../../api/mono_dense_keras/experiments/get_build_model_with_hp_f/" class="md-nav__link">
         get_build_model_with_hp_f
       </a>
     </li>
@@ -768,7 +779,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../get_data_path/" class="md-nav__link">
+      <a href="../../api/mono_dense_keras/experiments/get_data_path/" class="md-nav__link">
         get_data_path
       </a>
     </li>
@@ -780,19 +791,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../api/mono_dense_keras/experiments/get_train_n_test_data/" class="md-nav__link">
         get_train_n_test_data
       </a>
-      
     </li>
   
 
@@ -804,7 +807,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../peek/" class="md-nav__link">
+      <a href="../../api/mono_dense_keras/experiments/peek/" class="md-nav__link">
         peek
       </a>
     </li>
@@ -818,7 +821,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sanitize_col_names/" class="md-nav__link">
+      <a href="../../api/mono_dense_keras/experiments/sanitize_col_names/" class="md-nav__link">
         sanitize_col_names
       </a>
     </li>
@@ -870,7 +873,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../helpers/export/" class="md-nav__link">
+      <a href="../../api/mono_dense_keras/helpers/export/" class="md-nav__link">
         export
       </a>
     </li>
@@ -891,7 +894,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../replace_kernel_using_monotonicity_indicator/" class="md-nav__link">
+      <a href="../../api/mono_dense_keras/replace_kernel_using_monotonicity_indicator/" class="md-nav__link">
         replace_kernel_using_monotonicity_indicator
       </a>
     </li>
@@ -920,7 +923,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../changelog_not_found/" class="md-nav__link">
+      <a href="../../changelog_not_found/" class="md-nav__link">
         Releases
       </a>
     </li>
@@ -944,6 +947,8 @@
   
   
   
+    
+  
   
 </nav>
                   </div>
@@ -958,9 +963,312 @@
                   
 
 
-  <h1>get_train_n_test_data</h1>
+<h1 id="compas">COMPAS<a class="headerlink" href="#compas" title="Permanent link">¤</a></h1>
+<!-- WARNING: THIS FILE WAS AUTOGENERATED! DO NOT EDIT! -->
 
+<p>COMPAS [1] is a dataset containing the criminal records of 6,172
+individuals arrested in Florida. The task is to predict whether the
+individual will commit a crime again in 2 years. The probability
+predicted by the system will be used as a risk score. As mentioned in
+[2] 13 attributes for prediction. The risk score should be
+monotonically increasing w.r.t. four attributes, number of prior adult
+convictions, number of juvenile felony, number of juvenile misdemeanor,
+and number of other convictions. The <code>monotonicity_indicator</code>
+corrsponding to these features are set to 1.</p>
+<p>References:</p>
+<ol>
+<li>
+<p>S. Mattu J. Angwin, J. Larson and L. Kirchner. Machine bias: There’s
+    software used across the country to predict future criminals. and
+    it’s biased against blacks. ProPublica, 2016.</p>
+</li>
+<li>
+<p>Xingchao Liu, Xing Han, Na Zhang, and Qiang Liu. Certified monotonic
+    neural networks. Advances in Neural Information Processing Systems,
+    33:15427–15438, 2020</p>
+</li>
+</ol>
+<p>These are a few examples of the dataset:</p>
+<style type="text/css">
+</style>
 
+<table>
+<thead>
+<tr>
+<th> </th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>priors_count</td>
+<td>0.368421</td>
+<td>0.000000</td>
+<td>0.026316</td>
+<td>0.394737</td>
+<td>0.052632</td>
+</tr>
+<tr>
+<td>juv_fel_count</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+</tr>
+<tr>
+<td>juv_misd_count</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+</tr>
+<tr>
+<td>juv_other_count</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+</tr>
+<tr>
+<td>age</td>
+<td>0.230769</td>
+<td>0.051282</td>
+<td>0.179487</td>
+<td>0.230769</td>
+<td>0.102564</td>
+</tr>
+<tr>
+<td>race_0</td>
+<td>1.000000</td>
+<td>1.000000</td>
+<td>0.000000</td>
+<td>1.000000</td>
+<td>1.000000</td>
+</tr>
+<tr>
+<td>race_1</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>1.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+</tr>
+<tr>
+<td>race_2</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+</tr>
+<tr>
+<td>race_3</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+</tr>
+<tr>
+<td>race_4</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+</tr>
+<tr>
+<td>race_5</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+</tr>
+<tr>
+<td>sex_0</td>
+<td>1.000000</td>
+<td>1.000000</td>
+<td>1.000000</td>
+<td>1.000000</td>
+<td>1.000000</td>
+</tr>
+<tr>
+<td>sex_1</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+</tr>
+<tr>
+<td>ground_truth</td>
+<td>1.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>1.000000</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">max_epochs</span> <span class="o">=</span> <span class="mi">50</span>
+
+<span class="n">tuner</span> <span class="o">=</span> <span class="n">find_hyperparameters</span><span class="p">(</span>
+    <span class="s2">&quot;compas&quot;</span><span class="p">,</span>
+    <span class="n">monotonicity_indicator</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;priors_count&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;juv_fel_count&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;juv_misd_count&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;juv_other_count&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;race_0&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;race_1&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;race_2&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;race_3&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;race_4&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;race_5&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;sex_0&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;sex_1&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="n">max_trials</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+    <span class="n">final_activation</span><span class="o">=</span><span class="s2">&quot;sigmoid&quot;</span><span class="p">,</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="s2">&quot;binary_crossentropy&quot;</span><span class="p">,</span>
+    <span class="n">metrics</span> <span class="o">=</span> <span class="s2">&quot;accuracy&quot;</span><span class="p">,</span>
+    <span class="n">objective</span><span class="o">=</span><span class="s2">&quot;val_accuracy&quot;</span><span class="p">,</span>
+    <span class="n">direction</span><span class="o">=</span><span class="s2">&quot;max&quot;</span><span class="p">,</span>
+    <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+    <span class="n">max_epochs</span><span class="o">=</span><span class="n">max_epochs</span><span class="p">,</span>    
+    <span class="n">executions_per_trial</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Trial 50 Complete [00h 01m 15s]
+val_accuracy: 0.6793522238731384
+
+Best val_accuracy So Far: 0.6995951533317566
+Total elapsed time: 01h 43m 54s
+INFO:tensorflow:Oracle triggered exit
+</code></pre></div>
+<style type="text/css">
+</style>
+
+<table>
+<thead>
+<tr>
+<th> </th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>units</td>
+<td>27</td>
+<td>28</td>
+<td>25</td>
+<td>31</td>
+<td>23</td>
+</tr>
+<tr>
+<td>n_layers</td>
+<td>2</td>
+<td>3</td>
+<td>2</td>
+<td>3</td>
+<td>2</td>
+</tr>
+<tr>
+<td>activation</td>
+<td>elu</td>
+<td>elu</td>
+<td>elu</td>
+<td>elu</td>
+<td>elu</td>
+</tr>
+<tr>
+<td>learning_rate</td>
+<td>0.084685</td>
+<td>0.105227</td>
+<td>0.069011</td>
+<td>0.018339</td>
+<td>0.089831</td>
+</tr>
+<tr>
+<td>weight_decay</td>
+<td>0.137518</td>
+<td>0.120702</td>
+<td>0.153525</td>
+<td>0.105921</td>
+<td>0.140927</td>
+</tr>
+<tr>
+<td>dropout</td>
+<td>0.175917</td>
+<td>0.160270</td>
+<td>0.180772</td>
+<td>0.480390</td>
+<td>0.106579</td>
+</tr>
+<tr>
+<td>decay_rate</td>
+<td>0.899399</td>
+<td>0.872222</td>
+<td>0.874505</td>
+<td>0.964135</td>
+<td>0.824555</td>
+</tr>
+<tr>
+<td>val_accuracy_mean</td>
+<td>0.693441</td>
+<td>0.693117</td>
+<td>0.692955</td>
+<td>0.691498</td>
+<td>0.691498</td>
+</tr>
+<tr>
+<td>val_accuracy_std</td>
+<td>0.003648</td>
+<td>0.000992</td>
+<td>0.002016</td>
+<td>0.001280</td>
+<td>0.001899</td>
+</tr>
+<tr>
+<td>val_accuracy_min</td>
+<td>0.689069</td>
+<td>0.692308</td>
+<td>0.691498</td>
+<td>0.689879</td>
+<td>0.689069</td>
+</tr>
+<tr>
+<td>val_accuracy_max</td>
+<td>0.698785</td>
+<td>0.694737</td>
+<td>0.696356</td>
+<td>0.693117</td>
+<td>0.693117</td>
+</tr>
+<tr>
+<td>params</td>
+<td>2317</td>
+<td>3599</td>
+<td>2157</td>
+<td>4058</td>
+<td>1672</td>
+</tr>
+</tbody>
+</table>
 
 
 
@@ -1011,14 +1319,14 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.indexes", "navigation.top", "search.suggest", "search.highlight", "search.share"], "search": "../../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.indexes", "navigation.top", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.b4d07000.min.js"></script>
+      <script src="../../assets/javascripts/bundle.b4d07000.min.js"></script>
       
-        <script src="../../../../overrides/js/extra.js"></script>
+        <script src="../../overrides/js/extra.js"></script>
       
-        <script src="../../../../overrides/js/mathjax.js"></script>
+        <script src="../../overrides/js/mathjax.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       

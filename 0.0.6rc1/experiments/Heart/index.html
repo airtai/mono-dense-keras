@@ -18,7 +18,7 @@
         <link rel="prev" href="../AutoMPG/">
       
       
-        <link rel="next" href="../../api/mono_dense_keras/MonoDense/">
+        <link rel="next" href="../Compas/">
       
       <link rel="icon" href="../../overrides/images/airt_icon_blue.svg">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
@@ -324,6 +324,12 @@
         
           
         
+          
+        
+          
+        
+          
+        
       
       
         <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -385,6 +391,48 @@
         Heart disease
       </a>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Compas/" class="md-nav__link">
+        COMPAS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Blog/" class="md-nav__link">
+        Blog feedback
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Loan/" class="md-nav__link">
+        Loan
+      </a>
     </li>
   
 
@@ -921,7 +969,7 @@
 <p>Heart Disease [1] is a classification dataset used for predicting the
 presence of heart disease with 13 features (age, sex, cp, trestbps,
 chol, fbs, restecg, thalach, exang, oldpeak, slope, ca, thal) and
-monotonically increasing with respect to features- trestbps and
+monotonically increasing with respect to features trestbps and
 cholestrol (chol). The <code>monotonicity_indicator</code> corrsponding to these
 features are set to 1.</p>
 <p>References:</p>
@@ -1066,7 +1114,10 @@ features are set to 1.</p>
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre><span></span><code><span class="n">tuner</span> <span class="o">=</span> <span class="n">find_hyperparameters</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">max_epochs</span> <span class="o">=</span> <span class="mi">50</span>
+
+<span class="n">tuner</span> <span class="o">=</span> <span class="n">find_hyperparameters</span><span class="p">(</span>
     <span class="s2">&quot;heart&quot;</span><span class="p">,</span>
     <span class="n">monotonicity_indicator</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
@@ -1083,18 +1134,22 @@ features are set to 1.</p>
         <span class="s2">&quot;ca&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
         <span class="s2">&quot;thal&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
     <span class="p">},</span>
-    <span class="n">max_trials</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">max_trials</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
     <span class="n">final_activation</span><span class="o">=</span><span class="s2">&quot;sigmoid&quot;</span><span class="p">,</span>
     <span class="n">loss</span> <span class="o">=</span> <span class="s2">&quot;binary_crossentropy&quot;</span><span class="p">,</span>
     <span class="n">metrics</span> <span class="o">=</span> <span class="s2">&quot;accuracy&quot;</span><span class="p">,</span>
     <span class="n">objective</span><span class="o">=</span><span class="s2">&quot;val_accuracy&quot;</span><span class="p">,</span>
+    <span class="n">direction</span><span class="o">=</span><span class="s2">&quot;max&quot;</span><span class="p">,</span>
+    <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+    <span class="n">max_epochs</span><span class="o">=</span><span class="n">max_epochs</span><span class="p">,</span>
+    <span class="n">executions_per_trial</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
 <span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>Trial 100 Complete [00h 00m 24s]
+<div class="highlight"><pre><span></span><code>Trial 200 Complete [00h 00m 24s]
 val_accuracy: 0.8633879621823629
 
-Best val_accuracy So Far: 0.8797814249992371
-Total elapsed time: 00h 36m 01s
+Best val_accuracy So Far: 0.8852459192276001
+Total elapsed time: 01h 44m 27s
 INFO:tensorflow:Oracle triggered exit
 </code></pre></div>
 <style type="text/css">
@@ -1114,19 +1169,19 @@ INFO:tensorflow:Oracle triggered exit
 <tbody>
 <tr>
 <td>units</td>
+<td>29</td>
+<td>22</td>
 <td>16</td>
-<td>16</td>
-<td>17</td>
-<td>26</td>
-<td>32</td>
+<td>29</td>
+<td>23</td>
 </tr>
 <tr>
 <td>n_layers</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
 <td>3</td>
-<td>3</td>
-<td>2</td>
-<td>2</td>
-<td>2</td>
 </tr>
 <tr>
 <td>activation</td>
@@ -1139,56 +1194,56 @@ INFO:tensorflow:Oracle triggered exit
 <tr>
 <td>learning_rate</td>
 <td>0.001000</td>
+<td>0.001099</td>
+<td>0.002199</td>
 <td>0.001000</td>
-<td>0.001112</td>
-<td>0.001000</td>
-<td>0.001000</td>
+<td>0.001180</td>
 </tr>
 <tr>
 <td>weight_decay</td>
-<td>0.205112</td>
-<td>0.205682</td>
-<td>0.169679</td>
-<td>0.144370</td>
-<td>0.114788</td>
+<td>0.165278</td>
+<td>0.127898</td>
+<td>0.189895</td>
+<td>0.189451</td>
+<td>0.229994</td>
 </tr>
 <tr>
 <td>dropout</td>
-<td>0.500000</td>
-<td>0.500000</td>
-<td>0.500000</td>
-<td>0.500000</td>
-<td>0.446662</td>
+<td>0.357323</td>
+<td>0.272848</td>
+<td>0.334458</td>
+<td>0.457679</td>
+<td>0.365390</td>
 </tr>
 <tr>
 <td>decay_rate</td>
-<td>1.000000</td>
-<td>1.000000</td>
-<td>1.000000</td>
-<td>0.994300</td>
-<td>0.925633</td>
+<td>0.934428</td>
+<td>0.925691</td>
+<td>0.887252</td>
+<td>0.902783</td>
+<td>0.930666</td>
 </tr>
 <tr>
 <td>val_accuracy_mean</td>
+<td>0.885246</td>
+<td>0.885246</td>
+<td>0.885246</td>
 <td>0.881967</td>
 <td>0.881967</td>
-<td>0.881967</td>
-<td>0.878689</td>
-<td>0.875410</td>
 </tr>
 <tr>
 <td>val_accuracy_std</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
 <td>0.007331</td>
 <td>0.007331</td>
-<td>0.013716</td>
-<td>0.008979</td>
-<td>0.008979</td>
 </tr>
 <tr>
 <td>val_accuracy_min</td>
-<td>0.868852</td>
-<td>0.868852</td>
-<td>0.868852</td>
+<td>0.885246</td>
+<td>0.885246</td>
+<td>0.885246</td>
 <td>0.868852</td>
 <td>0.868852</td>
 </tr>
@@ -1196,17 +1251,17 @@ INFO:tensorflow:Oracle triggered exit
 <td>val_accuracy_max</td>
 <td>0.885246</td>
 <td>0.885246</td>
-<td>0.901639</td>
+<td>0.885246</td>
 <td>0.885246</td>
 <td>0.885246</td>
 </tr>
 <tr>
 <td>params</td>
-<td>897</td>
-<td>897</td>
-<td>680</td>
-<td>1377</td>
-<td>2017</td>
+<td>2880</td>
+<td>1605</td>
+<td>969</td>
+<td>2880</td>
+<td>2224</td>
 </tr>
 </tbody>
 </table>
