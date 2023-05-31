@@ -7,9 +7,9 @@ __all__ = ['dummy']
 # %% ../nbs/TopLevel.ipynb 1
 from mono_dense_keras._components.mono_dense_layer import (
     MonoDense,
-    replace_kernel_using_monotonicity_indicator,
     create_type_1,
     create_type_2,
+    replace_kernel_using_monotonicity_indicator,
 )
 
 # %% ../nbs/TopLevel.ipynb 2
