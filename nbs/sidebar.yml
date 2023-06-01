@@ -2,6 +2,7 @@ website:
   sidebar:
     contents:
       - index.ipynb
+      - InDepth.ipynb
       - section: Experiments
         contents:
           - Experiments.ipynb
@@ -10,3 +11,4 @@ website:
           - experiments/Compas.ipynb
           - experiments/Blog.ipynb
           - experiments/Loan.ipynb
+      - License.ipynb
