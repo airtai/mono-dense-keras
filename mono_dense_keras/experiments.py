@@ -78,6 +78,7 @@ def download_data(
     force_download: bool = False,
 ) -> None:
     data_path = get_data_path(data_path)
+    data_path.mkdir(exist_ok=True, parents=True)
 
     for prefix in ["train", "test"]:
         filename = f"{prefix}_{dataset_name}.csv"
