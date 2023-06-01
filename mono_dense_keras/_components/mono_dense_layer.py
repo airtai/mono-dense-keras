@@ -11,11 +11,10 @@ from datetime import datetime
 from functools import lru_cache
 from typing import *
 
-import tensorflow as tf
 import numpy as np
-
+import tensorflow as tf
 from numpy.typing import ArrayLike, NDArray
-from tensorflow.keras.layers import Dense, Dropout, Concatenate
+from tensorflow.keras.layers import Concatenate, Dense, Dropout
 from tensorflow.types.experimental import TensorLike
 
 from ..helpers import export
@@ -206,7 +205,7 @@ class MonoDense(Dense):
         is_convex: bool = False,
         is_concave: bool = False,
         activation_weights: Tuple[float, float, float] = (7.0, 7.0, 2.0),
-        **kwargs: Dict[str, Any],
+        **kwargs: Any,
     ):
         """Constructs a new MonoDense instance.
 
@@ -258,9 +257,7 @@ class MonoDense(Dense):
             self.saturated_activation,
         ) = get_activation_functions(self.org_activation)
 
-    def build(
-        self, input_shape: Tuple, *args: List[Any], **kwargs: Dict[str, Any]
-    ) -> None:
+    def build(self, input_shape: Tuple, *args: List[Any], **kwargs: Any) -> None:
         """Build
 
         Args:
@@ -356,7 +353,7 @@ def _prepare_mono_input_n_param(
 ) -> Tuple[List[TensorLike], List[T], List[str]]:
     if isinstance(inputs, list):
         if isinstance(param, int):
-            param = [param] * len(inputs)
+            param = [param] * len(inputs)  # type: ignore
         elif isinstance(param, list):
             if len(inputs) != len(param):
                 raise ValueError(f"{len(inputs)} != {len(param)}")
@@ -368,7 +365,7 @@ def _prepare_mono_input_n_param(
         sorted_feature_names = sorted(inputs.keys())
 
         if isinstance(param, int):
-            param = [param] * len(inputs)
+            param = [param] * len(inputs)  # type: ignore
         elif isinstance(param, dict):
             if set(param.keys()) != set(sorted_feature_names):
                 raise ValueError(f"{set(param.keys())} != {set(sorted_feature_names)}")
@@ -383,7 +380,7 @@ def _prepare_mono_input_n_param(
         if not isinstance(param, int):
             raise ValueError(f"Uncompatible types: {type(inputs)=}, {type(param)=}")
         inputs = [inputs]
-        param = [param]
+        param = [param]  # type: ignore
         sorted_feature_names = ["inputs"]
 
     return inputs, param, sorted_feature_names
@@ -393,7 +390,7 @@ def _check_convexity_params(
     monotonicity_indicator: List[int],
     is_convex: List[bool],
     is_concave: List[bool],
-    names,
+    names: List[str],
 ) -> Tuple[bool, bool]:
     ix = [
         i for i in range(len(monotonicity_indicator)) if is_convex[i] and is_concave[i]
@@ -468,8 +465,7 @@ def create_type_1(
     )(y)
 
     if final_activation is not None:
-        final_activation = tf.keras.activations.get(final_activation)
-        y = final_activation(y)
+        y = tf.keras.activations.get(final_activation)(y)
 
     return y
 
@@ -484,7 +480,7 @@ def create_type_2(
     activation: Union[str, Callable[[TensorLike], TensorLike]],
     n_layers: int,
     final_activation: Optional[Union[str, Callable[[TensorLike], TensorLike]]] = None,
-    monotonicity_indicator: Union[int, Dict[str, int]] = 1,
+    monotonicity_indicator: Union[int, Dict[str, int], List[int]] = 1,
     is_convex: Union[bool, Dict[str, bool], List[bool]] = False,
     is_concave: Union[bool, Dict[str, bool], List[bool]] = False,
     dropout: Optional[float] = None,
@@ -547,7 +543,7 @@ def create_type_2(
     ]
 
     y = Concatenate(name="preprocessed_features")(y)
-    monotonicity_indicator_block = sum(
+    monotonicity_indicator_block: List[int] = sum(
         [[abs(x)] * input_units for x in monotonicity_indicator], []
     )
 
@@ -561,7 +557,6 @@ def create_type_2(
     )(y)
 
     if final_activation is not None:
-        final_activation = tf.keras.activations.get(final_activation)
-        y = final_activation(y)
+        y = tf.keras.activations.get(final_activation)(y)
 
     return y

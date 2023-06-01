@@ -60,7 +60,10 @@ def download_url(url: str, output_path: Path) -> None:
     with DownloadProgressBar(
         unit="B", unit_scale=True, miniters=1, desc=url.split("/")[-1]
     ) as t:
-        urllib.request.urlretrieve(url, filename=output_path, reporthook=t.update_to)
+        # nosemgrep: python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected
+        urllib.request.urlretrieve(
+            url, filename=output_path, reporthook=t.update_to
+        )  # nosec
 
 # %% ../nbs/Experiments.ipynb 14
 def get_data_path(data_path: Optional[Union[Path, str]] = None) -> Path:
@@ -75,6 +78,7 @@ def download_data(
     force_download: bool = False,
 ) -> None:
     data_path = get_data_path(data_path)
+    data_path.mkdir(exist_ok=True, parents=True)
 
     for prefix in ["train", "test"]:
         filename = f"{prefix}_{dataset_name}.csv"
@@ -107,7 +111,7 @@ def get_train_n_test_data(
         for prefix in ["train", "test"]
     ]
     dfx = [sanitize_col_names(df) for df in dfx]
-    return tuple(dfx)
+    return dfx[0], dfx[1]
 
 # %% ../nbs/Experiments.ipynb 20
 def df2ds(df: pd.DataFrame) -> tf.data.Dataset:
@@ -127,14 +131,14 @@ def peek(ds: tf.data.Dataset) -> tf.Tensor:
 def build_mono_model_f(
     *,
     monotonicity_indicator: Dict[str, int],
-    final_activation: Union[str, Callable[[TensorLike, TensorLike], TensorLike]],
+    final_activation: Union[str, Callable[[TensorLike], TensorLike]],
     loss: Union[str, Callable[[TensorLike, TensorLike], TensorLike]],
     metrics: Union[str, Callable[[TensorLike, TensorLike], TensorLike]],
     train_ds: tf.data.Dataset,
-    batch_size,
+    batch_size: int,
     units: int,
     n_layers: int,
-    activation: Union[str, Callable[[TensorLike, TensorLike], TensorLike]],
+    activation: Union[str, Callable[[TensorLike], TensorLike]],
     learning_rate: float,
     weight_decay: float,
     dropout: float,
@@ -169,12 +173,20 @@ def build_mono_model_f(
 
 # %% ../nbs/Experiments.ipynb 24
 def get_build_model_with_hp_f(
-    build_model_f: Callable[[], Model], **kwargs: Any
+    build_model_f: Callable[[], Model],
+    hp_params_f: Optional[Callable[[HyperParameters], Dict[str, Any]]] = None,
+    **kwargs: Any,
 ) -> Callable[[HyperParameters], Model]:
     def build_model_with_hp_f(
-        hp: HyperParameters, kwargs: Dict[str, Any] = kwargs
+        hp: HyperParameters,
+        hp_params_f: Optional[
+            Callable[[HyperParameters], Dict[str, Any]]
+        ] = hp_params_f,
+        kwargs: Dict[str, Any] = kwargs,
     ) -> Model:
-        return build_model_f(
+        override_kwargs = hp_params_f(hp) if hp_params_f is not None else {}
+
+        default_kwargs = dict(
             units=hp.Int("units", min_value=8, max_value=32, step=1),
             n_layers=hp.Int("n_layers", min_value=1, max_value=4),
             activation=hp.Choice("activation", values=["elu"]),
@@ -190,8 +202,11 @@ def get_build_model_with_hp_f(
             decay_rate=hp.Float(
                 "decay_rate", min_value=0.5, max_value=1.0, sampling="reverse_log"
             ),
-            **kwargs
         )
+
+        default_kwargs.update(**override_kwargs)
+        model = build_model_f(**default_kwargs, **kwargs)
+        return model
 
     return build_model_with_hp_f
 
@@ -200,9 +215,9 @@ class TestHyperModel(HyperModel):
     def __init__(self, **kwargs: Any):
         self.kwargs = kwargs
 
-    def build(self, hp: HyperParameters):
+    def build(self, hp: HyperParameters) -> Model:
         build_model_with_hp_f = get_build_model_with_hp_f(
-            build_mono_model_f, **self.kwargs
+            build_mono_model_f, **self.kwargs  # type: ignore
         )
         return build_model_with_hp_f(hp)
 
@@ -214,6 +229,7 @@ def find_hyperparameters(
     final_activation: Union[str, Callable[[TensorLike, TensorLike], TensorLike]],
     loss: Union[str, Callable[[TensorLike, TensorLike], TensorLike]],
     metrics: Union[str, Callable[[TensorLike, TensorLike], TensorLike]],
+    hp_params_f: Optional[Callable[[HyperParameters], Dict[str, Any]]] = None,
     max_trials: int = 100,
     max_epochs: int = 50,
     batch_size: int = 8,
@@ -232,6 +248,7 @@ def find_hyperparameters(
 
     oracle = TestHyperModel(
         monotonicity_indicator=monotonicity_indicator,
+        hp_params_f=hp_params_f,
         final_activation=final_activation,
         loss=loss,
         metrics=metrics,
@@ -291,7 +308,7 @@ def create_model_stats(
         verbose: int = verbose,
         train_ds: tf.data.Dataset = train_ds,
         test_ds: tf.data.Dataset = test_ds,
-    ) -> Dict[str, Any]:
+    ) -> float:
         model = tuner.hypermodel.build(hp)
         stop_early = tf.keras.callbacks.EarlyStopping(
             monitor="val_loss", patience=patience
@@ -308,7 +325,7 @@ def create_model_stats(
             best_epoch = objective.index(max(objective))
         else:
             best_epoch = objective.index(min(objective))
-        return objective[best_epoch]
+        return objective[best_epoch]  # type: ignore
 
     xs = sorted(
         [model_stats() for _ in range(num_runs)],
@@ -321,10 +338,11 @@ def create_model_stats(
         for k in ["mean", "std", "min", "max"]
     }
     model = tuner.hypermodel.build(hp)
-    stats = pd.DataFrame(
-        dict(**hp.values, **stats, params=count_model_params(model)), index=[0]
+    stats_df = pd.DataFrame(
+        dict(**hp.values, **stats, params=count_model_params(model)),  # type: ignore
+        index=[0],
     )
-    return stats
+    return stats_df
 
 
 def create_tuner_stats(
@@ -361,6 +379,10 @@ def create_tuner_stats(
         else:
             stats = pd.concat([stats, new_entry]).reset_index(drop=True)
 
-        display(stats.sort_values(f"{tuner.oracle.objective.name}_mean"))
+        try:
+            display(stats.sort_values(f"{tuner.oracle.objective.name}_mean"))  # type: ignore
+        # nosemgrep
+        except Exception as e:  # nosec
+            pass
 
-    return stats.sort_values(f"{tuner.oracle.objective.name}_mean")
+    return stats.sort_values(f"{tuner.oracle.objective.name}_mean")  # type: ignore
