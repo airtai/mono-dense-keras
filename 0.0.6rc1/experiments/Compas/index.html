@@ -401,9 +401,47 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          COMPAS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         COMPAS
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#hyperparameter-search" class="md-nav__link">
+    Hyperparameter search
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-optimal-model" class="md-nav__link">
+    The optimal model
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -417,7 +455,7 @@
   
     <li class="md-nav__item">
       <a href="../Blog/" class="md-nav__link">
-        Blog feedback
+        Blog
       </a>
     </li>
   
@@ -950,6 +988,28 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#hyperparameter-search" class="md-nav__link">
+    Hyperparameter search
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-optimal-model" class="md-nav__link">
+    The optimal model
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -988,6 +1048,22 @@ corrsponding to these features are set to 1.</p>
     33:15427–15438, 2020</p>
 </li>
 </ol>
+<div class="highlight"><pre><span></span><code><span class="n">monotonicity_indicator</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;priors_count&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;juv_fel_count&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;juv_misd_count&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;juv_other_count&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;race_0&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;race_1&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;race_2&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;race_3&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;race_4&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;race_5&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;sex_0&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;sex_1&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>These are a few examples of the dataset:</p>
 <style type="text/css">
 </style>
@@ -1118,44 +1194,69 @@ corrsponding to these features are set to 1.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="hyperparameter-search">Hyperparameter search<a class="headerlink" href="#hyperparameter-search" title="Permanent link">¤</a></h2>
+<p>The choice of the batch size and the maximum number of epochs depends on
+the dataset size. For this dataset, we use the following values:</p>
 <div class="highlight"><pre><span></span><code><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">8</span>
 <span class="n">max_epochs</span> <span class="o">=</span> <span class="mi">50</span>
-
-<span class="n">tuner</span> <span class="o">=</span> <span class="n">find_hyperparameters</span><span class="p">(</span>
-    <span class="s2">&quot;compas&quot;</span><span class="p">,</span>
-    <span class="n">monotonicity_indicator</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;priors_count&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="s2">&quot;juv_fel_count&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="s2">&quot;juv_misd_count&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="s2">&quot;juv_other_count&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="s2">&quot;race_0&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="s2">&quot;race_1&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="s2">&quot;race_2&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="s2">&quot;race_3&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="s2">&quot;race_4&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="s2">&quot;race_5&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="s2">&quot;sex_0&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="s2">&quot;sex_1&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="p">},</span>
-    <span class="n">max_trials</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
-    <span class="n">final_activation</span><span class="o">=</span><span class="s2">&quot;sigmoid&quot;</span><span class="p">,</span>
-    <span class="n">loss</span> <span class="o">=</span> <span class="s2">&quot;binary_crossentropy&quot;</span><span class="p">,</span>
-    <span class="n">metrics</span> <span class="o">=</span> <span class="s2">&quot;accuracy&quot;</span><span class="p">,</span>
-    <span class="n">objective</span><span class="o">=</span><span class="s2">&quot;val_accuracy&quot;</span><span class="p">,</span>
-    <span class="n">direction</span><span class="o">=</span><span class="s2">&quot;max&quot;</span><span class="p">,</span>
-    <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
-    <span class="n">max_epochs</span><span class="o">=</span><span class="n">max_epochs</span><span class="p">,</span>    
-    <span class="n">executions_per_trial</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-<span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>Trial 50 Complete [00h 01m 15s]
-val_accuracy: 0.6793522238731384
-
-Best val_accuracy So Far: 0.6995951533317566
-Total elapsed time: 01h 43m 54s
-INFO:tensorflow:Oracle triggered exit
+<p>We use the Type-2 architecture built using
+<a href="https://airtai.github.io/mono-dense-keras/0.0.6rc1/api/mono_dense_keras/MonoDense/#mono_dense_keras.MonoDense"><code>MonoDense</code></a>
+layer with the following set of hyperparameters ranges:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">hp_params_f</span><span class="p">(</span><span class="n">hp</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">units</span><span class="o">=</span><span class="n">hp</span><span class="o">.</span><span class="n">Int</span><span class="p">(</span><span class="s2">&quot;units&quot;</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+        <span class="n">n_layers</span><span class="o">=</span><span class="n">hp</span><span class="o">.</span><span class="n">Int</span><span class="p">(</span><span class="s2">&quot;n_layers&quot;</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+        <span class="n">activation</span><span class="o">=</span><span class="n">hp</span><span class="o">.</span><span class="n">Choice</span><span class="p">(</span><span class="s2">&quot;activation&quot;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;elu&quot;</span><span class="p">]),</span>
+        <span class="n">learning_rate</span><span class="o">=</span><span class="n">hp</span><span class="o">.</span><span class="n">Float</span><span class="p">(</span>
+            <span class="s2">&quot;learning_rate&quot;</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">,</span> <span class="n">sampling</span><span class="o">=</span><span class="s2">&quot;log&quot;</span>
+        <span class="p">),</span>
+        <span class="n">weight_decay</span><span class="o">=</span><span class="n">hp</span><span class="o">.</span><span class="n">Float</span><span class="p">(</span>
+            <span class="s2">&quot;weight_decay&quot;</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="mf">3e-2</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">sampling</span><span class="o">=</span><span class="s2">&quot;log&quot;</span>
+        <span class="p">),</span>
+        <span class="n">dropout</span><span class="o">=</span><span class="n">hp</span><span class="o">.</span><span class="n">Float</span><span class="p">(</span><span class="s2">&quot;dropout&quot;</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">sampling</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">),</span>
+        <span class="n">decay_rate</span><span class="o">=</span><span class="n">hp</span><span class="o">.</span><span class="n">Float</span><span class="p">(</span>
+            <span class="s2">&quot;decay_rate&quot;</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">sampling</span><span class="o">=</span><span class="s2">&quot;reverse_log&quot;</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
 </code></pre></div>
+<p>The following fixed parameters are used to build the Type-2 architecture
+for this dataset:</p>
+<ul>
+<li>
+<p><code>final_activation</code> is used to build the final layer for regression
+  problem (set to <code>None</code>) or for the classification problem
+  (<code>"sigmoid"</code>),</p>
+</li>
+<li>
+<p><code>loss</code> is used for training regression (<code>"mse"</code>) or classification
+  (<code>"binary_crossentropy"</code>) problem, and</p>
+</li>
+<li>
+<p><code>metrics</code> denotes metrics used to compare with previosly published
+  results: <code>"accuracy"</code> for classification and “<code>mse</code>” or “<code>rmse</code>” for
+  regression.</p>
+</li>
+</ul>
+<p>Parameters <code>objective</code> and <code>direction</code> are used by the tuner such that
+<code>objective=f"val_{metrics}"</code> and direction is either <code>"min</code> or <code>"max"</code>.</p>
+<p>Parameters <code>max_trials</code> denotes the number of trial performed buy the
+tuner, <code>patience</code> is the number of epochs allowed to perform worst than
+the best one before stopping the current trial. The parameter
+<code>execution_per_trial</code> denotes the number of runs before calculating the
+results of a trial, it should be set to value greater than 1 for small
+datasets that have high variance in results.</p>
+<div class="highlight"><pre><span></span><code><span class="n">final_activation</span> <span class="o">=</span> <span class="s2">&quot;sigmoid&quot;</span>
+<span class="n">loss</span> <span class="o">=</span> <span class="s2">&quot;binary_crossentropy&quot;</span>
+<span class="n">metrics</span> <span class="o">=</span> <span class="s2">&quot;accuracy&quot;</span>
+<span class="n">objective</span> <span class="o">=</span> <span class="s2">&quot;val_accuracy&quot;</span>
+<span class="n">direction</span> <span class="o">=</span> <span class="s2">&quot;max&quot;</span>
+<span class="n">max_trials</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">executions_per_trial</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">patience</span> <span class="o">=</span> <span class="mi">5</span>
+</code></pre></div>
+<p>The following table describes the best models and their hyperparameters
+found by the tuner:</p>
 <style type="text/css">
 </style>
 
@@ -1175,9 +1276,9 @@ INFO:tensorflow:Oracle triggered exit
 <td>units</td>
 <td>27</td>
 <td>28</td>
-<td>25</td>
+<td>26</td>
 <td>31</td>
-<td>23</td>
+<td>25</td>
 </tr>
 <tr>
 <td>n_layers</td>
@@ -1199,73 +1300,148 @@ INFO:tensorflow:Oracle triggered exit
 <td>learning_rate</td>
 <td>0.084685</td>
 <td>0.105227</td>
-<td>0.069011</td>
+<td>0.086301</td>
 <td>0.018339</td>
-<td>0.089831</td>
+<td>0.069011</td>
 </tr>
 <tr>
 <td>weight_decay</td>
 <td>0.137518</td>
 <td>0.120702</td>
-<td>0.153525</td>
+<td>0.147297</td>
 <td>0.105921</td>
-<td>0.140927</td>
+<td>0.153525</td>
 </tr>
 <tr>
 <td>dropout</td>
 <td>0.175917</td>
 <td>0.160270</td>
-<td>0.180772</td>
+<td>0.162063</td>
 <td>0.480390</td>
-<td>0.106579</td>
+<td>0.180772</td>
 </tr>
 <tr>
 <td>decay_rate</td>
 <td>0.899399</td>
 <td>0.872222</td>
-<td>0.874505</td>
+<td>0.927282</td>
 <td>0.964135</td>
-<td>0.824555</td>
+<td>0.874505</td>
 </tr>
 <tr>
 <td>val_accuracy_mean</td>
-<td>0.693441</td>
-<td>0.693117</td>
+<td>0.694413</td>
+<td>0.693603</td>
 <td>0.692955</td>
-<td>0.691498</td>
-<td>0.691498</td>
+<td>0.692308</td>
+<td>0.692146</td>
 </tr>
 <tr>
 <td>val_accuracy_std</td>
-<td>0.003648</td>
-<td>0.000992</td>
-<td>0.002016</td>
-<td>0.001280</td>
-<td>0.001899</td>
+<td>0.003464</td>
+<td>0.000923</td>
+<td>0.002710</td>
+<td>0.002217</td>
+<td>0.002649</td>
 </tr>
 <tr>
 <td>val_accuracy_min</td>
-<td>0.689069</td>
-<td>0.692308</td>
-<td>0.691498</td>
 <td>0.689879</td>
+<td>0.692308</td>
 <td>0.689069</td>
+<td>0.689069</td>
+<td>0.689879</td>
 </tr>
 <tr>
 <td>val_accuracy_max</td>
 <td>0.698785</td>
 <td>0.694737</td>
+<td>0.695547</td>
+<td>0.694737</td>
 <td>0.696356</td>
-<td>0.693117</td>
-<td>0.693117</td>
 </tr>
 <tr>
 <td>params</td>
 <td>2317</td>
 <td>3599</td>
-<td>2157</td>
+<td>2237</td>
 <td>4058</td>
-<td>1672</td>
+<td>2157</td>
+</tr>
+</tbody>
+</table>
+<h2 id="the-optimal-model">The optimal model<a class="headerlink" href="#the-optimal-model" title="Permanent link">¤</a></h2>
+<p>These are the best hyperparameters found by previous runs of the tuner:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">final_hp_params_f</span><span class="p">(</span><span class="n">hp</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">units</span><span class="o">=</span><span class="n">hp</span><span class="o">.</span><span class="n">Fixed</span><span class="p">(</span><span class="s2">&quot;units&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">27</span><span class="p">),</span>
+        <span class="n">n_layers</span><span class="o">=</span><span class="n">hp</span><span class="o">.</span><span class="n">Fixed</span><span class="p">(</span><span class="s2">&quot;n_layers&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+        <span class="n">activation</span><span class="o">=</span><span class="n">hp</span><span class="o">.</span><span class="n">Fixed</span><span class="p">(</span><span class="s2">&quot;activation&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;elu&quot;</span><span class="p">),</span>
+        <span class="n">learning_rate</span><span class="o">=</span><span class="n">hp</span><span class="o">.</span><span class="n">Fixed</span><span class="p">(</span><span class="s2">&quot;learning_rate&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">0.084685</span><span class="p">),</span>
+        <span class="n">weight_decay</span><span class="o">=</span><span class="n">hp</span><span class="o">.</span><span class="n">Fixed</span><span class="p">(</span><span class="s2">&quot;weight_decay&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">0.137518</span><span class="p">),</span>
+        <span class="n">dropout</span><span class="o">=</span><span class="n">hp</span><span class="o">.</span><span class="n">Fixed</span><span class="p">(</span><span class="s2">&quot;dropout&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">0.175917</span><span class="p">),</span>
+        <span class="n">decay_rate</span><span class="o">=</span><span class="n">hp</span><span class="o">.</span><span class="n">Fixed</span><span class="p">(</span><span class="s2">&quot;decay_rate&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">0.899399</span><span class="p">),</span>
+    <span class="p">)</span>
+</code></pre></div>
+<p>The final evaluation of the optimal model:</p>
+<style type="text/css">
+</style>
+
+<table>
+<thead>
+<tr>
+<th> </th>
+<th>0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>units</td>
+<td>27</td>
+</tr>
+<tr>
+<td>n_layers</td>
+<td>2</td>
+</tr>
+<tr>
+<td>activation</td>
+<td>elu</td>
+</tr>
+<tr>
+<td>learning_rate</td>
+<td>0.084685</td>
+</tr>
+<tr>
+<td>weight_decay</td>
+<td>0.137518</td>
+</tr>
+<tr>
+<td>dropout</td>
+<td>0.175917</td>
+</tr>
+<tr>
+<td>decay_rate</td>
+<td>0.899399</td>
+</tr>
+<tr>
+<td>val_accuracy_mean</td>
+<td>0.691660</td>
+</tr>
+<tr>
+<td>val_accuracy_std</td>
+<td>0.001056</td>
+</tr>
+<tr>
+<td>val_accuracy_min</td>
+<td>0.690688</td>
+</tr>
+<tr>
+<td>val_accuracy_max</td>
+<td>0.693117</td>
+</tr>
+<tr>
+<td>params</td>
+<td>2317</td>
 </tr>
 </tbody>
 </table>

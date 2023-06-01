@@ -405,7 +405,7 @@
   
     <li class="md-nav__item">
       <a href="../../../experiments/Blog/" class="md-nav__link">
-        Blog feedback
+        Blog
       </a>
     </li>
   
@@ -1158,7 +1158,10 @@ then all input features are set to the same monotinicity indicator.</p></td>
 
       <details class="quote">
         <summary>Source code in <code>mono_dense_keras/_components/mono_dense_layer.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">415</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">412</span>
+<span class="normal">413</span>
+<span class="normal">414</span>
+<span class="normal">415</span>
 <span class="normal">416</span>
 <span class="normal">417</span>
 <span class="normal">418</span>
@@ -1213,11 +1216,7 @@ then all input features are set to the same monotinicity indicator.</p></td>
 <span class="normal">467</span>
 <span class="normal">468</span>
 <span class="normal">469</span>
-<span class="normal">470</span>
-<span class="normal">471</span>
-<span class="normal">472</span>
-<span class="normal">473</span>
-<span class="normal">474</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@export</span>
+<span class="normal">470</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@export</span>
 <span class="k">def</span> <span class="nf">create_type_1</span><span class="p">(</span>
     <span class="n">inputs</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">TensorLike</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">TensorLike</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="n">TensorLike</span><span class="p">]],</span>
     <span class="o">*</span><span class="p">,</span>
@@ -1273,8 +1272,7 @@ then all input features are set to the same monotinicity indicator.</p></td>
     <span class="p">)(</span><span class="n">y</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">final_activation</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">final_activation</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">activations</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">final_activation</span><span class="p">)</span>
-        <span class="n">y</span> <span class="o">=</span> <span class="n">final_activation</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">activations</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">final_activation</span><span class="p">)(</span><span class="n">y</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">y</span>
 </code></pre></div></td></tr></table></div>

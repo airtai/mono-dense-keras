@@ -407,7 +407,7 @@
   
     <li class="md-nav__item">
       <a href="../Blog/" class="md-nav__link">
-        Blog feedback
+        Blog
       </a>
     </li>
   
@@ -429,9 +429,47 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Loan
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Loan
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#hyperparameter-search" class="md-nav__link">
+    Hyperparameter search
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-optimal-model" class="md-nav__link">
+    The optimal model
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -950,6 +988,28 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#hyperparameter-search" class="md-nav__link">
+    Hyperparameter search
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-optimal-model" class="md-nav__link">
+    The optimal model
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -980,6 +1040,10 @@ corrsponding to these features are set to 1.</p>
 <li><a href="https://www.kaggle.com/wendykan/lending-club-loan-data">https://www.kaggle.com/wendykan/lending-club-loan-data</a> (Note:
     Currently, the dataset seems to be withdrawn from kaggle)</li>
 </ol>
+<div class="highlight"><pre><span></span><code><span class="n">monotonicity_indicator</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="sa">f</span><span class="s2">&quot;feature_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">:</span> <span class="n">mi</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">mi</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">23</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>These are a few examples of the dataset:</p>
 <style type="text/css">
 </style>
@@ -1230,65 +1294,144 @@ corrsponding to these features are set to 1.</p>
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre><span></span><code><span class="n">monotonicity_indicator</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="sa">f</span><span class="s2">&quot;feature_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">:</span> <span class="n">mi</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">mi</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">23</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">256</span>
+<h2 id="hyperparameter-search">Hyperparameter search<a class="headerlink" href="#hyperparameter-search" title="Permanent link">¤</a></h2>
+<p>The choice of the batch size and the maximum number of epochs depends on
+the dataset size. For this dataset, we use the following values:</p>
+<div class="highlight"><pre><span></span><code><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">256</span>
 <span class="n">max_epochs</span> <span class="o">=</span> <span class="mi">20</span>
-
-<span class="n">tuner</span> <span class="o">=</span> <span class="n">find_hyperparameters</span><span class="p">(</span>
-    <span class="s2">&quot;loan&quot;</span><span class="p">,</span>
-    <span class="n">monotonicity_indicator</span><span class="o">=</span><span class="n">monotonicity_indicator</span><span class="p">,</span>
-    <span class="n">max_trials</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
-    <span class="n">final_activation</span><span class="o">=</span><span class="s2">&quot;sigmoid&quot;</span><span class="p">,</span>
-    <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;binary_crossentropy&quot;</span><span class="p">,</span>
-    <span class="n">metrics</span><span class="o">=</span><span class="s2">&quot;accuracy&quot;</span><span class="p">,</span>
-    <span class="n">objective</span><span class="o">=</span><span class="s2">&quot;val_accuracy&quot;</span><span class="p">,</span>
-    <span class="n">direction</span><span class="o">=</span><span class="s2">&quot;max&quot;</span><span class="p">,</span>
-    <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
-    <span class="n">max_epochs</span><span class="o">=</span><span class="n">max_epochs</span><span class="p">,</span>
-    <span class="n">executions_per_trial</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-<span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>Trial 42 Complete [00h 10m 22s]
-val_accuracy: 0.6502591967582703
-
-Best val_accuracy So Far: 0.6515268087387085
-Total elapsed time: 07h 02m 34s
-
-Search: Running Trial #43
-
-Value             |Best Value So Far |Hyperparameter
-8                 |32                |units
-4                 |4                 |n_layers
-elu               |elu               |activation
-0.028901          |0.001             |learning_rate
-0.11556           |0.1               |weight_decay
-0                 |0.5               |dropout
-0.77927           |0.85232           |decay_rate
-
-Epoch 1/20
-1636/1636 [==============================] - 39s 17ms/step - loss: 0.6350 - accuracy: 0.6395 - val_loss: 0.6323 - val_accuracy: 0.6467
-Epoch 2/20
-1636/1636 [==============================] - 31s 17ms/step - loss: 0.6320 - accuracy: 0.6418 - val_loss: 0.6286 - val_accuracy: 0.6467
-Epoch 3/20
-1636/1636 [==============================] - 30s 16ms/step - loss: 0.6321 - accuracy: 0.6408 - val_loss: 0.6281 - val_accuracy: 0.6465
-Epoch 4/20
-1636/1636 [==============================] - 32s 17ms/step - loss: 0.6307 - accuracy: 0.6421 - val_loss: 0.6280 - val_accuracy: 0.6467
-Epoch 5/20
-1636/1636 [==============================] - 31s 16ms/step - loss: 0.6304 - accuracy: 0.6426 - val_loss: 0.6299 - val_accuracy: 0.6453
-Epoch 6/20
-1636/1636 [==============================] - 31s 16ms/step - loss: 0.6296 - accuracy: 0.6441 - val_loss: 0.6260 - val_accuracy: 0.6493
-Epoch 7/20
-1636/1636 [==============================] - 30s 16ms/step - loss: 0.6293 - accuracy: 0.6440 - val_loss: 0.6413 - val_accuracy: 0.6293
-Epoch 8/20
-1636/1636 [==============================] - 31s 16ms/step - loss: 0.6287 - accuracy: 0.6443 - val_loss: 0.6266 - val_accuracy: 0.6479
-Epoch 9/20
-1636/1636 [==============================] - 31s 16ms/step - loss: 0.6280 - accuracy: 0.6448 - val_loss: 0.6247 - val_accuracy: 0.6499
-Epoch 10/20
-1497/1636 [==========================&gt;...] - ETA: 2s - loss: 0.6279 - accuracy: 0.6456
+<p>We use the Type-2 architecture built using
+<a href="https://airtai.github.io/mono-dense-keras/0.0.6rc1/api/mono_dense_keras/MonoDense/#mono_dense_keras.MonoDense"><code>MonoDense</code></a>
+layer with the following set of hyperparameters ranges:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">hp_params_f</span><span class="p">(</span><span class="n">hp</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">units</span><span class="o">=</span><span class="n">hp</span><span class="o">.</span><span class="n">Int</span><span class="p">(</span><span class="s2">&quot;units&quot;</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+        <span class="n">n_layers</span><span class="o">=</span><span class="n">hp</span><span class="o">.</span><span class="n">Int</span><span class="p">(</span><span class="s2">&quot;n_layers&quot;</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+        <span class="n">activation</span><span class="o">=</span><span class="n">hp</span><span class="o">.</span><span class="n">Choice</span><span class="p">(</span><span class="s2">&quot;activation&quot;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;elu&quot;</span><span class="p">]),</span>
+        <span class="n">learning_rate</span><span class="o">=</span><span class="n">hp</span><span class="o">.</span><span class="n">Float</span><span class="p">(</span>
+            <span class="s2">&quot;learning_rate&quot;</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">,</span> <span class="n">sampling</span><span class="o">=</span><span class="s2">&quot;log&quot;</span>
+        <span class="p">),</span>
+        <span class="n">weight_decay</span><span class="o">=</span><span class="n">hp</span><span class="o">.</span><span class="n">Float</span><span class="p">(</span>
+            <span class="s2">&quot;weight_decay&quot;</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="mf">3e-2</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">sampling</span><span class="o">=</span><span class="s2">&quot;log&quot;</span>
+        <span class="p">),</span>
+        <span class="n">dropout</span><span class="o">=</span><span class="n">hp</span><span class="o">.</span><span class="n">Float</span><span class="p">(</span><span class="s2">&quot;dropout&quot;</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">sampling</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">),</span>
+        <span class="n">decay_rate</span><span class="o">=</span><span class="n">hp</span><span class="o">.</span><span class="n">Float</span><span class="p">(</span>
+            <span class="s2">&quot;decay_rate&quot;</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">sampling</span><span class="o">=</span><span class="s2">&quot;reverse_log&quot;</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
 </code></pre></div>
+<p>The following fixed parameters are used to build the Type-2 architecture
+for this dataset:</p>
+<ul>
+<li>
+<p><code>final_activation</code> is used to build the final layer for regression
+  problem (set to <code>None</code>) or for the classification problem
+  (<code>"sigmoid"</code>),</p>
+</li>
+<li>
+<p><code>loss</code> is used for training regression (<code>"mse"</code>) or classification
+  (<code>"binary_crossentropy"</code>) problem, and</p>
+</li>
+<li>
+<p><code>metrics</code> denotes metrics used to compare with previosly published
+  results: <code>"accuracy"</code> for classification and “<code>mse</code>” or “<code>rmse</code>” for
+  regression.</p>
+</li>
+</ul>
+<p>Parameters <code>objective</code> and <code>direction</code> are used by the tuner such that
+<code>objective=f"val_{metrics}"</code> and direction is either <code>"min</code> or <code>"max"</code>.</p>
+<p>Parameters <code>max_trials</code> denotes the number of trial performed buy the
+tuner, <code>patience</code> is the number of epochs allowed to perform worst than
+the best one before stopping the current trial. The parameter
+<code>execution_per_trial</code> denotes the number of runs before calculating the
+results of a trial, it should be set to value greater than 1 for small
+datasets that have high variance in results.</p>
+<div class="highlight"><pre><span></span><code><span class="n">final_activation</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">loss</span> <span class="o">=</span> <span class="s2">&quot;binary_crossentropy&quot;</span>
+<span class="n">metrics</span> <span class="o">=</span> <span class="s2">&quot;accuracy&quot;</span>
+<span class="n">objective</span> <span class="o">=</span> <span class="s2">&quot;val_accuracy&quot;</span>
+<span class="n">direction</span> <span class="o">=</span> <span class="s2">&quot;max&quot;</span>
+<span class="n">max_trials</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">executions_per_trial</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">patience</span> <span class="o">=</span> <span class="mi">5</span>
+</code></pre></div>
+<p>The following table describes the best models and their hyperparameters
+found by the tuner:</p>
+<h2 id="the-optimal-model">The optimal model<a class="headerlink" href="#the-optimal-model" title="Permanent link">¤</a></h2>
+<p>These are the best hyperparameters found by previous runs of the tuner:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">final_hp_params_f</span><span class="p">(</span><span class="n">hp</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">units</span><span class="o">=</span><span class="n">hp</span><span class="o">.</span><span class="n">Fixed</span><span class="p">(</span><span class="s2">&quot;units&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span>
+        <span class="n">n_layers</span><span class="o">=</span><span class="n">hp</span><span class="o">.</span><span class="n">Fixed</span><span class="p">(</span><span class="s2">&quot;n_layers&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+        <span class="n">activation</span><span class="o">=</span><span class="n">hp</span><span class="o">.</span><span class="n">Fixed</span><span class="p">(</span><span class="s2">&quot;activation&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;elu&quot;</span><span class="p">),</span>
+        <span class="n">learning_rate</span><span class="o">=</span><span class="n">hp</span><span class="o">.</span><span class="n">Fixed</span><span class="p">(</span><span class="s2">&quot;learning_rate&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">0.008</span><span class="p">),</span>
+        <span class="n">weight_decay</span><span class="o">=</span><span class="n">hp</span><span class="o">.</span><span class="n">Fixed</span><span class="p">(</span><span class="s2">&quot;weight_decay&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">0.0</span><span class="p">),</span>
+        <span class="n">dropout</span><span class="o">=</span><span class="n">hp</span><span class="o">.</span><span class="n">Fixed</span><span class="p">(</span><span class="s2">&quot;dropout&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">0.0</span><span class="p">),</span>
+        <span class="n">decay_rate</span><span class="o">=</span><span class="n">hp</span><span class="o">.</span><span class="n">Fixed</span><span class="p">(</span><span class="s2">&quot;decay_rate&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
+    <span class="p">)</span>
+</code></pre></div>
+<p>The final evaluation of the optimal model:</p>
+<style type="text/css">
+</style>
+
+<table>
+<thead>
+<tr>
+<th> </th>
+<th>0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>units</td>
+<td>8</td>
+</tr>
+<tr>
+<td>n_layers</td>
+<td>2</td>
+</tr>
+<tr>
+<td>activation</td>
+<td>elu</td>
+</tr>
+<tr>
+<td>learning_rate</td>
+<td>0.008000</td>
+</tr>
+<tr>
+<td>weight_decay</td>
+<td>0.000000</td>
+</tr>
+<tr>
+<td>dropout</td>
+<td>0.000000</td>
+</tr>
+<tr>
+<td>decay_rate</td>
+<td>1.000000</td>
+</tr>
+<tr>
+<td>val_accuracy_mean</td>
+<td>0.652917</td>
+</tr>
+<tr>
+<td>val_accuracy_std</td>
+<td>0.000085</td>
+</tr>
+<tr>
+<td>val_accuracy_min</td>
+<td>0.652851</td>
+</tr>
+<tr>
+<td>val_accuracy_max</td>
+<td>0.653065</td>
+</tr>
+<tr>
+<td>params</td>
+<td>577</td>
+</tr>
+</tbody>
+</table>
 
 
 
