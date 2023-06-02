@@ -4,17 +4,14 @@
 __all__ = ['get_train_n_test_data', 'df2ds', 'peek', 'find_hyperparameters', 'create_tuner_stats']
 
 # %% ../nbs/Experiments.ipynb 3
+import shutil
+import urllib.request
 from contextlib import contextmanager
 from datetime import datetime
 from os import environ
 from pathlib import Path
-from typing import *
-
 from tempfile import TemporaryDirectory
-import urllib.request
-import shutil
-
-from tqdm import tqdm
+from typing import *
 
 import matplotlib
 import matplotlib.pyplot as plt
@@ -25,10 +22,10 @@ import seaborn as sns
 import tensorflow as tf
 from keras_tuner import (
     BayesianOptimization,
+    HyperModel,
+    HyperParameters,
     Objective,
     Tuner,
-    HyperParameters,
-    HyperModel,
 )
 from numpy.typing import ArrayLike, NDArray
 from tensorflow.keras import Model
@@ -36,12 +33,9 @@ from tensorflow.keras.backend import count_params
 from tensorflow.keras.layers import Concatenate, Dense, Dropout, Input
 from tensorflow.keras.optimizers.experimental import AdamW
 from tensorflow.types.experimental import TensorLike
+from tqdm import tqdm
 
-from mono_dense_keras import (
-    MonoDense,
-    create_type_1,
-    create_type_2,
-)
+from . import MonoDense, create_type_1, create_type_2
 
 # %% ../nbs/Experiments.ipynb 7
 class _DownloadProgressBar(tqdm):
