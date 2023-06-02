@@ -32,7 +32,7 @@ requirements = ["tensorflow>=2.10.0"]
     
 dev_requirements = [
     "keras-tuner[bayesian]==1.3.5",
-    "nbdev_mkdocs==0.5.0",
+    "nbdev_mkdocs==0.5.1",
     "pytest==7.3.1",
     "pandas>=1.3.5",
     "nbqa==1.7.0",

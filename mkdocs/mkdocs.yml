@@ -70,6 +70,7 @@ theme:
   - search.suggest
   - search.highlight
   - search.share
+  - content.code.copy
   palette:
   - scheme: slate
     primary: custom

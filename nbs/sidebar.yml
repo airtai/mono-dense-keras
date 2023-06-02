@@ -2,11 +2,12 @@ website:
   sidebar:
     contents:
       - index.ipynb
+      - InDepth.ipynb
       - section: Experiments
         contents:
-          - Experiments.ipynb
           - experiments/AutoMPG.ipynb
           - experiments/Heart.ipynb
           - experiments/Compas.ipynb
           - experiments/Blog.ipynb
           - experiments/Loan.ipynb
+      - License.ipynb
