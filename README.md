@@ -5,19 +5,43 @@ Monotonic Dense Layer
 
 This Python library implements Monotonic Dense Layer as described in
 Davor Runje, Sharath M. Shankaranarayana, “Constrained Monotonic Neural
-Networks”, https://https://arxiv.org/abs/2205.11775.
+Networks” \[[PDF](https://arxiv.org/pdf/2205.11775.pdf)\].
 
 If you use this library, please cite:
 
-    @misc{https://doi.org/10.48550/arxiv.2205.11775,
-      doi = {10.48550/ARXIV.2205.11775},
-      url = {https://arxiv.org/abs/2205.11775},
-      author = {Davor Runje and Sharath M. Shankaranarayana},
-      title = {Constrained Monotonic Neural Networks},
-      publisher = {arXiv},
-      year = {2022},
-      copyright = {Creative Commons Attribution Non Commercial Share Alike 4.0 International}
-    }
+``` title="bibtex"
+@inproceedings{runje2023,
+  title={Constrained Monotonic Neural Networks},
+  author={Davor Runje and Sharath M. Shankaranarayana},
+  booktitle={Proceedings of the 40th {International Conference on Machine Learning}},
+  year={2023}
+}
+```
+
+This package contains an implementation of our Monotonic Dense Layer
+[`MonoDense`](https://mono-dense-keras.airt.ai/0.0.6/api/mono_dense_keras/MonoDense/#mono_dense_keras.MonoDense)
+(Constrained Monotonic Fully Connected Layer). Below is the figure from
+the paper for reference.
+
+In the code, the variable `monotonicity_indicator` corresponds to **t**
+in the figure and parameters `is_convex`, `is_concave` and
+`activation_weights` are used to calculate the activation selector **s**
+as follows:
+
+- if `is_convex` or `is_concave` is **True**, then the activation
+  selector **s** will be (`units`, 0, 0) and (0, `units`, 0),
+  respecively.
+
+- if both `is_convex` or `is_concave` is **False**, then the
+  `activation_weights` represent ratios between $\breve{s}$, $\hat{s}$
+  and $\tilde{s}$, respecively. E.g. if `activation_weights = (2, 2, 1)`
+  and `units = 10`, then
+
+$$
+(\breve{s}, \hat{s}, \tilde{s}) = (4, 4, 2)
+$$
+
+![mono-dense-layer-diagram](https://github.com/airtai/mono-dense-keras/raw/main/nbs/images/mono-dense-layer-diagram.png)
 
 ## Install
 
@@ -27,40 +51,68 @@ pip install mono-dense-keras
 
 ## How to use
 
-First, we’ll create a simple dataset for testing using numpy. Inputs
-values $x_1$, $x_2$ and $x_3$ will be sampled from the normal
-distribution, while the output value $y$ will be calculated according to
-the following formula before adding noise to it:
+In this example, we’ll assume we have a simple dataset with three inputs
+values $x_1$, $x_2$ and $x_3$ sampled from the normal distribution,
+while the output value $y$ is calculated according to the following
+formula before adding Gaussian noise to it:
 
 $y = x_1^3 + \sin\left(\frac{x_2}{2 \pi}\right) + e^{-x_3}$
 
-``` python
-import numpy as np
-
-rng = np.random.default_rng(42)
-
-def generate_data(no_samples: int, noise: float):
-    x = rng.normal(size=(no_samples, 3))
-    y = x[:, 0] ** 3
-    y += np.sin(x[:, 1] / (2*np.pi))
-    y += np.exp(-x[:, 2])
-    y += noise * rng.normal(size=no_samples)
-    return x, y
-
-x_train, y_train = generate_data(10_000, noise=0.1)
-x_val, y_val = generate_data(10_000, noise=0.)
-```
+<table id="T_6be9e">
+  <thead>
+    <tr>
+      <th id="T_6be9e_level0_col0" class="col_heading level0 col0" >x0</th>
+      <th id="T_6be9e_level0_col1" class="col_heading level0 col1" >x1</th>
+      <th id="T_6be9e_level0_col2" class="col_heading level0 col2" >x2</th>
+      <th id="T_6be9e_level0_col3" class="col_heading level0 col3" >y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_6be9e_row0_col0" class="data row0 col0" >0.304717</td>
+      <td id="T_6be9e_row0_col1" class="data row0 col1" >-1.039984</td>
+      <td id="T_6be9e_row0_col2" class="data row0 col2" >0.750451</td>
+      <td id="T_6be9e_row0_col3" class="data row0 col3" >0.234541</td>
+    </tr>
+    <tr>
+      <td id="T_6be9e_row1_col0" class="data row1 col0" >0.940565</td>
+      <td id="T_6be9e_row1_col1" class="data row1 col1" >-1.951035</td>
+      <td id="T_6be9e_row1_col2" class="data row1 col2" >-1.302180</td>
+      <td id="T_6be9e_row1_col3" class="data row1 col3" >4.199094</td>
+    </tr>
+    <tr>
+      <td id="T_6be9e_row2_col0" class="data row2 col0" >0.127840</td>
+      <td id="T_6be9e_row2_col1" class="data row2 col1" >-0.316243</td>
+      <td id="T_6be9e_row2_col2" class="data row2 col2" >-0.016801</td>
+      <td id="T_6be9e_row2_col3" class="data row2 col3" >0.834086</td>
+    </tr>
+    <tr>
+      <td id="T_6be9e_row3_col0" class="data row3 col0" >-0.853044</td>
+      <td id="T_6be9e_row3_col1" class="data row3 col1" >0.879398</td>
+      <td id="T_6be9e_row3_col2" class="data row3 col2" >0.777792</td>
+      <td id="T_6be9e_row3_col3" class="data row3 col3" >-0.093359</td>
+    </tr>
+    <tr>
+      <td id="T_6be9e_row4_col0" class="data row4 col0" >0.066031</td>
+      <td id="T_6be9e_row4_col1" class="data row4 col1" >1.127241</td>
+      <td id="T_6be9e_row4_col2" class="data row4 col2" >0.467509</td>
+      <td id="T_6be9e_row4_col3" class="data row4 col3" >0.780875</td>
+    </tr>
+  </tbody>
+</table>
 
 Now, we’ll use the
-[`MonoDense`](https://airtai.github.io/mono-dense-keras/monodenselayer.html#monodense)
-layer instead of `Dense` layer. By default, the
-[`MonoDense`](https://airtai.github.io/mono-dense-keras/monodenselayer.html#monodense)
+[`MonoDense`](https://mono-dense-keras.airt.ai/0.0.6/api/mono_dense_keras/MonoDense/#mono_dense_keras.MonoDense)
+layer instead of `Dense` layer to build a simple monotonic network. By
+default, the
+[`MonoDense`](https://mono-dense-keras.airt.ai/0.0.6/api/mono_dense_keras/MonoDense/#mono_dense_keras.MonoDense)
 layer assumes the output of the layer is monotonically increasing with
 all inputs. This assumtion is always true for all layers except possibly
 the first one. For the first layer, we use `monotonicity_indicator` to
 specify which input parameters are monotonic and to specify are they
-increasingly or decreasingly monotonic: - set 1 for increasingly
-monotonic parameter,
+increasingly or decreasingly monotonic:
+
+- set 1 for increasingly monotonic parameter,
 
 - set -1 for decreasingly monotonic parameter, and
 
@@ -75,30 +127,32 @@ $\left(\frac{\partial y}{x_1} = 3 {x_1}^2 \geq 0\right)$, and
 
 ``` python
 from tensorflow.keras import Sequential
-from tensorflow.keras.layers import Input, Dense
+from tensorflow.keras.layers import Dense, Input
+
 from mono_dense_keras import MonoDense
 
-# build a simple model with 3 hidden layer, but this using MonotonicDense layer
 model = Sequential()
 
 model.add(Input(shape=(3,)))
 monotonicity_indicator = [1, 0, -1]
-model.add(MonoDense(128, activation="elu", monotonicity_indicator=monotonicity_indicator))
+model.add(
+    MonoDense(128, activation="elu", monotonicity_indicator=monotonicity_indicator)
+)
 model.add(MonoDense(128, activation="elu"))
 model.add(MonoDense(1))
 
 model.summary()
 ```
 
-    Model: "sequential_1"
+    Model: "sequential_7"
     _________________________________________________________________
      Layer (type)                Output Shape              Param #   
     =================================================================
-     mono_dense_2 (MonoDense)    (None, 128)               512       
+     mono_dense_21 (MonoDense)   (None, 128)               512       
                                                                      
-     mono_dense_3 (MonoDense)    (None, 128)               16512     
+     mono_dense_22 (MonoDense)   (None, 128)               16512     
                                                                      
-     mono_dense_4 (MonoDense)    (None, 1)                 129       
+     mono_dense_23 (MonoDense)   (None, 1)                 129       
                                                                      
     =================================================================
     Total params: 17,153
@@ -106,51 +160,55 @@ model.summary()
     Non-trainable params: 0
     _________________________________________________________________
 
+Now we can train the model as usual using `Model.fit`:
+
 ``` python
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.optimizers.schedules import ExponentialDecay
 
-def train_model(model, initial_learning_rate):
-    # train the model
-    lr_schedule = ExponentialDecay(
-        initial_learning_rate=initial_learning_rate,
-        decay_steps=10_000 // 32,
-        decay_rate=0.9,
-    )
-    optimizer = Adam(learning_rate=lr_schedule)
-    model.compile(optimizer="adam", loss="mse")
+lr_schedule = ExponentialDecay(
+    initial_learning_rate=0.01,
+    decay_steps=10_000 // 32,
+    decay_rate=0.9,
+)
+optimizer = Adam(learning_rate=lr_schedule)
+model.compile(optimizer=optimizer, loss="mse")
 
-    model.fit(x=x_train, y=y_train, batch_size=32, validation_data=(x_val, y_val), epochs=10)
-    
-train_model(model, initial_learning_rate=1.)
+model.fit(
+    x=x_train, y=y_train, batch_size=32, validation_data=(x_val, y_val), epochs=10
+)
 ```
 
     Epoch 1/10
-    313/313 [==============================] - 2s 5ms/step - loss: 0.2590 - val_loss: 0.4990
+    313/313 [==============================] - 2s 5ms/step - loss: 9.6909 - val_loss: 6.3050
     Epoch 2/10
-    313/313 [==============================] - 1s 4ms/step - loss: 0.2875 - val_loss: 0.1390
+    313/313 [==============================] - 1s 4ms/step - loss: 4.1970 - val_loss: 2.0028
     Epoch 3/10
-    313/313 [==============================] - 1s 4ms/step - loss: 0.2241 - val_loss: 0.0790
+    313/313 [==============================] - 1s 4ms/step - loss: 1.7086 - val_loss: 1.0551
     Epoch 4/10
-    313/313 [==============================] - 1s 4ms/step - loss: 0.2297 - val_loss: 0.1043
+    313/313 [==============================] - 1s 4ms/step - loss: 0.9906 - val_loss: 0.5927
     Epoch 5/10
-    313/313 [==============================] - 1s 4ms/step - loss: 0.2502 - val_loss: 0.1089
+    313/313 [==============================] - 1s 4ms/step - loss: 0.6411 - val_loss: 0.1694
     Epoch 6/10
-    313/313 [==============================] - 1s 4ms/step - loss: 0.2231 - val_loss: 0.0590
+    313/313 [==============================] - 1s 4ms/step - loss: 0.6686 - val_loss: 1.7604
     Epoch 7/10
-    313/313 [==============================] - 1s 4ms/step - loss: 0.1715 - val_loss: 0.5466
+    313/313 [==============================] - 1s 4ms/step - loss: 0.6464 - val_loss: 0.1079
     Epoch 8/10
-    313/313 [==============================] - 1s 4ms/step - loss: 0.1890 - val_loss: 0.0863
+    313/313 [==============================] - 1s 4ms/step - loss: 0.4570 - val_loss: 0.1365
     Epoch 9/10
-    313/313 [==============================] - 1s 4ms/step - loss: 0.1655 - val_loss: 0.1200
+    313/313 [==============================] - 1s 4ms/step - loss: 0.2945 - val_loss: 0.0664
     Epoch 10/10
-    313/313 [==============================] - 1s 4ms/step - loss: 0.2332 - val_loss: 0.1196
+    313/313 [==============================] - 1s 4ms/step - loss: 0.2095 - val_loss: 0.0849
+
+    <keras.callbacks.History>
 
 ## License
 
-The full text of the license is available at:
-
-https://github.com/airtai/mono-dense-keras/blob/main/LICENSE
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This
+work is licensed under a
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative
+Commons Attribution-NonCommercial-ShareAlike 4.0 International
+License</a>.
 
 You are free to: - Share — copy and redistribute the material in any
 medium or format
