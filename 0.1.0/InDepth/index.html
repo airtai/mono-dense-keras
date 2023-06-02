@@ -386,15 +386,15 @@
     Architecture types
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Architecture types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#type-1-architecture" class="md-nav__link">
     Type-1 architecture
   </a>
   
-    <nav class="md-nav" aria-label="Type-1 architecture">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#type-2-architecture" class="md-nav__link">
@@ -946,15 +946,15 @@
     Architecture types
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Architecture types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#type-1-architecture" class="md-nav__link">
     Type-1 architecture
   </a>
   
-    <nav class="md-nav" aria-label="Type-1 architecture">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#type-2-architecture" class="md-nav__link">
@@ -1049,14 +1049,6 @@ with a single hidden layer with either <span class="arithmatex">\(2\)</span> or 
 activation. A cubic function is apt for our illustration since it is
 concave in the considered interval <span class="arithmatex">\([-1, 0]\)</span> and convex in the interval
 <span class="arithmatex">\([0, 1]\)</span>.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># # kind = &quot;Constrained with ReLU-based activations&quot;</span>
-<span class="c1"># kind = &quot;Uncontrained&quot;</span>
-<span class="c1"># units = 2</span>
-<span class="c1"># model = create_model(kind, units=units)</span>
-<span class="c1"># model.summary()</span>
-<span class="c1"># train_model(model)</span>
-<span class="c1"># models[(kind, units)] = model</span>
-</code></pre></div>
 <table>
 <tr>
 <td style="width:60%">
@@ -1164,7 +1156,7 @@ follows:</p>
 <p>Below is an example of a kernel <span class="arithmatex">\(W\in \mathbb{R}^{9 × 12}\)</span> with 12 units
 and 9 inputs before and after applying the monotonicity indicator
 <span class="arithmatex">\(t =(-1, -1, -1, 0, 0, 0, 1, 1, 1)\)</span>:</p>
-<p><img alt="original kernel" src="images/nbs/images/kernel__W__in__mathbb_R___9_×_12__.png" />
+<p><img alt="original kernel" src="../images/nbs/images/kernel__W__in__mathbb_R___9_x_12__.png" />
 <img alt="replaced
 kernel" src="../images/nbs/images/kernel__%28%7CW_T%7C_t%29_T__after_applying_monotonicity_indicator__t%3D%28-1%2C_-1%2C_-1%2C_0%2C_0%2C_0%2C_1%2C_1%2C_1%29_.png" /></p>
 <h3 id="monotonic-dense-layer">Monotonic Dense Layer<a class="headerlink" href="#monotonic-dense-layer" title="Permanent link">¤</a></h3>
@@ -1206,7 +1198,7 @@ size 9 and 12 inputs features.</p>
 <p><img alt="" src="images/nbs/images/input__x__in__mathbb_R___9_×_12___with_batch_size_9_and_12_inputs.png" /></p>
 <p>The figure below is an example of a kernel with 18 units and 12 input
 features.</p>
-<p><img alt="kernel" src="images/nbs/images/kernel__(%7CW_T%7C_t)_T__in__mathbb_R___12_×_18___after_applying__t=%5B1,_1,_1,_1,_0,_0,_0,_0,_-1,_-1,_-1,_-1%5D__in__mathbb_R___12__.png" /></p>
+<p><img alt="kernel" src="../images/nbs/images/kernel__%28%7CW_T%7C_t%29_T__in__mathbb_R___12_x_18___after_applying__t%3D%5B1%2C_1%2C_1%2C_1%2C_0%2C_0%2C_0%2C_0%2C_-1%2C_-1%2C_-1%2C_-1%5D__in__mathbb_R___12__.png" /></p>
 <p>The input <span class="arithmatex">\(x\)</span> is multiplied with kernel
 <span class="arithmatex">\((|W^T|_t)^T \in \mathbb{R}^{12 × 18}\)</span> after applying monotonicity
 indicator <span class="arithmatex">\(t \in \mathbb{R}^{12}\)</span> to it and then the bias <span class="arithmatex">\(b\)</span> (initially
@@ -1219,7 +1211,7 @@ by plugging in our monotonic dense blocks. We have two functions for
 building neural networks using
 <a href="https://airtai.github.io/mono-dense-keras/0.1.0/api/mono_dense_keras/MonoDense/#mono_dense_keras.MonoDense"><code>MonoDense</code></a>
 layer.</p>
-<h2 id="type-1-architecture">Type-1 architecture<a class="headerlink" href="#type-1-architecture" title="Permanent link">¤</a></h2>
+<h3 id="type-1-architecture">Type-1 architecture<a class="headerlink" href="#type-1-architecture" title="Permanent link">¤</a></h3>
 <p>The first example shown in the figure below corresponds to the standard
 MLP type of neural network architecture used in general, where each of
 the input features is concatenated to form one single input feature
