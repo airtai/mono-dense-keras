@@ -163,7 +163,6 @@ def apply_monotonicity_indicator_to_kernel(
     return xs
 
 
-@export
 @contextmanager
 def replace_kernel_using_monotonicity_indicator(
     layer: tf.keras.layers.Dense,
@@ -186,13 +185,20 @@ class MonoDense(Dense):
 
     This is an implementation of our Monotonic Dense Unit or Constrained Monotone Fully Connected Layer. The below is the figure from the paper for reference.
 
-    In the code, the variable `monotonicity_indicator` corresponds to **t** in the figure and the variable `activation_selector` corresponds to **s**.
+    - the parameter `monotonicity_indicator` corresponds to **t** in the figure below, and
 
-    Parameters `convexity_indicator` and `epsilon` are used to calculate `activation_selector` as follows:
-    - if `convexity_indicator` is  -1 or 1, then `activation_selector` will have all elements 0 or 1, respecively.
-    - if `convexity_indicator` is `None`, then `epsilon` must have a value between 0 and 1 and corresponds to the percentage of elements of `activation_selector` set to 1.
+    - parameters `is_convex`, `is_concave` and `activation_weights` are used to calculate the activation selector **s** as follows:
 
-    ![mono-dense-layer-diagram.png](images/mono-dense-layer-diagram.png)
+        - if `is_convex` or `is_concave` is **True**, then the activation selector **s** will be (`units`, 0, 0) and (0, `units`, 0), respecively.
+
+        - if both  `is_convex` or `is_concave` is **False**, then the `activation_weights` represent ratios between $\\breve{s}$, $\\hat{s}$ and $\\tilde{s}$,
+          respecively. E.g. if `activation_weights = (2, 2, 1)` and `units = 10`, then
+
+    $$
+    (\\breve{s}, \\hat{s}, \\tilde{s}) = (4, 4, 2)
+    $$
+
+    ![mono-dense-layer-diagram.png](../../../images/nbs/images/mono-dense-layer-diagram.png)
 
     """
 
@@ -425,6 +431,19 @@ def create_type_1(
 ) -> TensorLike:
     """Builds Type-1 monotonic network
 
+    Type-1 architecture corresponds to the standard MLP type of neural network architecture used in general, where each
+    of the input features is concatenated to form one single input feature vector $\mathbf{x}$ and fed into the network,
+    with the only difference being that instead of standard fully connected or dense layers, we employ monotonic dense units
+    throughout. For the first (or input layer) layer, the indicator vector $\mathbf{t}$, is used to identify the monotonicity
+    property of the input feature with respect to the output. Specifically, $\mathbf{t}$ is set to $1$ for those components
+    in the input feature vector that are monotonically increasing and is set to $-1$ for those components that are monotonically
+    decreasing and set to $0$ if the feature is non-monotonic. For the subsequent hidden layers, monotonic dense units with the
+    indicator vector $\mathbf{t}$ always being set to $1$ are used in order to preserve monotonicity. Finally, depending on
+    whether the problem at hand is a regression problem or a classification problem (or even a multi-task problem), an appropriate
+    activation function (such as linear activation or sigmoid or softmax) to obtain the final output.
+
+    ![mono-dense-layer-diagram.png](../../../images/nbs/images/type-1.png)
+
     Args:
         inputs: input tensor or a dictionary of tensors
         units: number of units in hidden layers
@@ -486,6 +505,21 @@ def create_type_2(
     dropout: Optional[float] = None,
 ) -> TensorLike:
     """Builds Type-2 monotonic network
+
+    Type-2 architecture is another example of a neural network architecture that can be built employing proposed
+    monotonic dense blocks. The difference when compared to the architecture described above lies in the way input
+    features are fed into the hidden layers of neural network architecture. Instead of concatenating the features
+    directly, this architecture provides flexibility to employ any form of complex feature extractors for the
+    non-monotonic features and use the extracted feature vectors as inputs. Another difference is that each monotonic
+    input is passed through separate monotonic dense units. This provides an advantage since depending on whether the
+    input is completely concave or convex or both, we can adjust the activation selection vector $\mathbf{s}$ appropriately
+    along with an appropriate value for the indicator vector $\mathbf{t}$. Thus, each of the monotonic input features has
+    a separate monotonic dense layer associated with it. Thus as the major difference to the above-mentioned architecture,
+    we concatenate the feature vectors instead of concatenating the inputs directly. The subsequent parts of the network are
+    similar to the architecture described above wherein for the rest of the hidden monotonic dense units, the indicator vector
+    $\mathbf{t}$ is always set to $1$ to preserve monotonicity.
+
+    ![mono-dense-layer-diagram.png](../../../images/nbs/images/type-2.png)
 
     Args:
         inputs: input tensor or a dictionary of tensors

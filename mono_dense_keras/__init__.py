@@ -9,7 +9,6 @@ from mono_dense_keras._components.mono_dense_layer import (
     MonoDense,
     create_type_1,
     create_type_2,
-    replace_kernel_using_monotonicity_indicator,
 )
 
 # %% ../nbs/TopLevel.ipynb 2
@@ -22,7 +21,6 @@ dummy.__module__ = "_dummy"
 # %% ../nbs/TopLevel.ipynb 3
 __all__ = [
     "MonoDense",
-    "replace_kernel_using_monotonicity_indicator",
     "create_type_1",
     "create_type_2",
 ]
