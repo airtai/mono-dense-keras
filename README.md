@@ -19,7 +19,7 @@ If you use this library, please cite:
 ```
 
 This package contains an implementation of our Monotonic Dense Layer
-[`MonoDense`](https://mono-dense-keras.airt.ai/0.0.6/api/mono_dense_keras/MonoDense/#mono_dense_keras.MonoDense)
+[`MonoDense`](https://mono-dense-keras.airt.ai/0.1.0/api/mono_dense_keras/MonoDense/#mono_dense_keras.MonoDense)
 (Constrained Monotonic Fully Connected Layer). Below is the figure from
 the paper for reference.
 
@@ -102,10 +102,10 @@ $y = x_1^3 + \sin\left(\frac{x_2}{2 \pi}\right) + e^{-x_3}$
 </table>
 
 Now, we’ll use the
-[`MonoDense`](https://mono-dense-keras.airt.ai/0.0.6/api/mono_dense_keras/MonoDense/#mono_dense_keras.MonoDense)
+[`MonoDense`](https://mono-dense-keras.airt.ai/0.1.0/api/mono_dense_keras/MonoDense/#mono_dense_keras.MonoDense)
 layer instead of `Dense` layer to build a simple monotonic network. By
 default, the
-[`MonoDense`](https://mono-dense-keras.airt.ai/0.0.6/api/mono_dense_keras/MonoDense/#mono_dense_keras.MonoDense)
+[`MonoDense`](https://mono-dense-keras.airt.ai/0.1.0/api/mono_dense_keras/MonoDense/#mono_dense_keras.MonoDense)
 layer assumes the output of the layer is monotonically increasing with
 all inputs. This assumtion is always true for all layers except possibly
 the first one. For the first layer, we use `monotonicity_indicator` to
