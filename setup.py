@@ -28,11 +28,13 @@ py_versions = '3.6 3.7 3.8 3.9 3.10 3.11'.split()
 min_python = cfg['min_python']
 lic = licenses.get(cfg['license'].lower(), (cfg['license'], None))
 
-requirements = ["tensorflow>=2.10.0"]
+requirements = ["tensorflow>=2.10.0,<2.16"]
     
 dev_requirements = [
     "keras-tuner[bayesian]==1.3.5",
-    "nbdev_mkdocs==0.5.1",
+    "nbdev-mkdocs==0.6.1",
+    "nbdev==2.3.12",
+    "fastcore==1.7.20",
     "pytest==7.3.1",
     "pandas>=1.3.5",
     "nbqa==1.7.0",
